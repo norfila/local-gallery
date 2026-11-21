@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <!-- Exists only in the test APK. Exposes a generated fixture, never user files. -->
+        <provider
+            android:name="com.luma.gallery.data.MetadataFixtureProvider"
+            android:authorities="com.luma.gallery.test.metadata"
+            android:exported="true" />
+        <provider
+            android:name="com.luma.gallery.data.HiddenMediaFixtureProvider$Control"
+            android:authorities="com.luma.gallery.test.hidden.control"
+            android:exported="true" />
+        <provider
+            android:name="com.luma.gallery.data.HiddenMediaFixtureProvider"
+            android:authorities="com.luma.gallery.test.hidden"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
+    </application>
+</manifest>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hidden files found with all files access can live on any storage volume. -->
+<paths>
+    <root-path name="storage" path="." />
+</paths>

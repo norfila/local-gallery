@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common actions -->
+    <string name="action_cancel">Abbrechen</string>
+    <string name="action_done">Fertig</string>
+    <string name="action_save">Speichern</string>
+    <string name="action_back">Zurück</string>
+    <string name="action_retry">Erneut versuchen</string>
+    <string name="action_got_it">Verstanden</string>
+
+    <plurals name="per_row">
+        <item quantity="one">%d pro Reihe</item>
+        <item quantity="other">%d pro Reihe</item>
+    </plurals>
+    <plurals name="folder_count">
+        <item quantity="one">%d Ordner</item>
+        <item quantity="other">%d Ordner</item>
+    </plurals>
+
+    <!-- Photo arrangement -->
+    <string name="arrangement_title">Fotoanordnung</string>
+    <string name="arrangement_hint">Tipp: Zieh zwei Finger auf deinen Fotos zusammen oder auseinander, um die Spaltenzahl zu ändern.</string>
+    <string name="layout_grid">Raster</string>
+    <string name="layout_masonry">Mosaik</string>
+    <string name="arrangement_state">%1$s, %2$s, %3$s</string>
+    <string name="arrangement_preview_description">Fotovorschau: %1$s</string>
+    <string name="corners_rounded">abgerundete Ecken</string>
+    <string name="corners_square">eckige Ecken</string>
+    <plurals name="column_count">
+        <item quantity="one">%d Spalte</item>
+        <item quantity="other">%d Spalten</item>
+    </plurals>
+
+    <!-- Album options -->
+    <string name="album_settings_title">Albumeinstellungen</string>
+    <string name="album_rename">Album umbenennen</string>
+    <string name="album_choose_thumbnail">Albumbild wählen</string>
+    <string name="album_linked_folders">Verknüpfte Ordner</string>
+    <string name="album_add_widget">Widget zum Startbildschirm hinzufügen</string>
+    <string name="album_add_widget_subtitle">Größe und Form wählen</string>
+    <string name="album_delete">Album löschen</string>
+    <string name="album_delete_subtitle">Die Originaldateien bleiben erhalten</string>
+    <string name="widget_size_title">Größe des Album-Widgets</string>
+    <string name="widget_size_message">Wähle eine Startgröße. Du kannst das Widget auf dem Startbildschirm anpassen.</string>
+
+    <!-- Settings -->
+    <string name="settings_layout">Layout</string>
+    <string name="settings_photos_per_row">Fotos pro Reihe</string>
+    <string name="settings_rounded_corners">Abgerundete Fotoecken</string>
+
+    <!-- Delete and bin -->
+    <string name="action_delete">Löschen</string>
+    <string name="delete_permission_denied">Zum Löschen braucht Gallery Schreibzugriff auf den Speicher. Es wurde nichts gelöscht.</string>
+    <string name="delete_unavailable">Android konnte die Löschbestätigung nicht öffnen.</string>
+    <string name="delete_permanently_message">Diese Android-Version hat keinen Papierkorb. Gelöschte Elemente lassen sich nicht wiederherstellen.</string>
+    <string name="delete_permanently_hidden_message">Versteckte Dateien, die Android nicht erfasst, können nicht in den Papierkorb. Sie werden endgültig gelöscht und lassen sich nicht wiederherstellen.</string>
+    <plurals name="delete_permanently_title">
+        <item quantity="one">%d Element endgültig löschen?</item>
+        <item quantity="other">%d Elemente endgültig löschen?</item>
+    </plurals>
+    <plurals name="delete_failed">
+        <item quantity="one">%d Element konnte nicht gelöscht werden.</item>
+        <item quantity="other">%d Elemente konnten nicht gelöscht werden.</item>
+    </plurals>
+    <plurals name="moved_to_bin">
+        <item quantity="one">%d Element in den Papierkorb verschoben</item>
+        <item quantity="other">%d Elemente in den Papierkorb verschoben</item>
+    </plurals>
+    <plurals name="deleted_count">
+        <item quantity="one">%d Element gelöscht</item>
+        <item quantity="other">%d Elemente gelöscht</item>
+    </plurals>
+    <string name="bin_title">Papierkorb</string>
+    <string name="bin_explanation">Elemente im Papierkorb werden nach 30 Tagen endgültig gelöscht. Es ist der Papierkorb von Android und wird mit anderen Galerie-Apps geteilt.</string>
+    <string name="bin_empty_action">Papierkorb leeren</string>
+    <string name="bin_restore">Wiederherstellen</string>
+    <string name="bin_delete_forever">Endgültig löschen</string>
+    <string name="bin_empty_title">Der Papierkorb ist leer.</string>
+    <string name="bin_empty_message">Gelöschte Fotos und Videos bleiben 30 Tage hier, bevor Android sie entfernt.</string>
+    <string name="bin_empty_confirm_title">Papierkorb leeren?</string>
+    <plurals name="bin_empty_confirm_message">
+        <item quantity="one">%d Element wird endgültig gelöscht.</item>
+        <item quantity="other">%d Elemente werden endgültig gelöscht.</item>
+    </plurals>
+    <plurals name="bin_days_left">
+        <item quantity="one">%d Tag</item>
+        <item quantity="other">%d Tage</item>
+    </plurals>
+    <string name="selection_cancel">Auswahl aufheben</string>
+    <plurals name="selected_count">
+        <item quantity="one">%d ausgewählt</item>
+        <item quantity="other">%d ausgewählt</item>
+    </plurals>
+
+    <!-- Viewer -->
+    <string name="viewer_close">Foto schließen</string>
+    <string name="viewer_position">%1$d von %2$d</string>
+    <string name="viewer_more">Weitere Optionen</string>
+    <string name="viewer_details">Details</string>
+    <string name="viewer_add_to_album">Zu Album hinzufügen</string>
+    <string name="viewer_move">In Ordner verschieben</string>
+    <string name="viewer_open_with">Öffnen mit</string>
+    <string name="viewer_use_as">Verwenden als</string>
+    <string name="viewer_set_wallpaper">Als Hintergrund festlegen</string>
+    <string name="wallpaper_target_title">Als Hintergrund festlegen</string>
+    <string name="wallpaper_home">Startbildschirm</string>
+    <string name="wallpaper_lock">Sperrbildschirm</string>
+    <string name="wallpaper_both">Start- und Sperrbildschirm</string>
+    <string name="wallpaper_done">Hintergrund festgelegt</string>
+    <string name="wallpaper_failed">Der Hintergrund konnte nicht festgelegt werden.</string>
+    <string name="viewer_share">Teilen</string>
+    <string name="viewer_edit">Bearbeiten</string>
+    <string name="viewer_photo_unavailable">Foto nicht verfügbar</string>
+    <string name="viewer_photo_unavailable_message">Die Datei wurde möglicherweise verschoben oder der Fotozugriff hat sich geändert.</string>
+    <string name="share_title">Teilen</string>
+    <string name="share_unavailable">Keine App zum Teilen verfügbar.</string>
+    <string name="open_with_unavailable">Keine App kann dieses Element öffnen.</string>
+    <string name="video_play">Video abspielen</string>
+    <string name="video_pause">Video pausieren</string>
+    <string name="video_mute">Stumm schalten</string>
+    <string name="video_unmute">Ton einschalten</string>
+    <string name="video_seek">Wiedergabeposition</string>
+    <string name="video_unavailable">Dieses Video konnte nicht abgespielt werden.</string>
+    <string name="video_state_unavailable">Video nicht verfügbar</string>
+    <string name="video_state_loading">Video wird geladen</string>
+    <string name="video_state_buffering">Video wird gepuffert</string>
+    <string name="video_state_playing">Video wird abgespielt</string>
+    <string name="video_state_paused">Video pausiert</string>
+
+    <!-- Details -->
+    <string name="details_photo_title">Fotodetails</string>
+    <string name="details_video_title">Videodetails</string>
+    <string name="details_show">Details anzeigen</string>
+    <string name="details_close">Details schließen</string>
+    <string name="details_expand">%s ausklappen</string>
+    <string name="details_collapse">%s einklappen</string>
+    <string name="details_expanded">Ausgeklappt</string>
+    <string name="details_collapsed">Eingeklappt</string>
+    <string name="details_no_metadata">Keine Metadaten vorhanden</string>
+    <string name="details_copy">%s kopieren</string>
+    <string name="details_show_less">Weniger anzeigen</string>
+    <string name="details_show_all">Vollständigen Wert anzeigen</string>
+    <string name="details_rating_value">%d / 5 · in der Datei gespeichert</string>
+    <string name="details_open_map">In Karten öffnen</string>
+    <string name="section_file">Datei</string>
+    <string name="section_capture">Aufnahmedatum &amp; -zeit</string>
+    <string name="section_camera">Kamera &amp; Objektiv</string>
+    <string name="section_exposure">Belichtung</string>
+    <string name="section_location">Ort</string>
+    <string name="section_image">Bild</string>
+    <string name="section_ratings">Bewertungen</string>
+    <string name="section_other">Weitere Metadaten</string>
+    <string name="meta_name">Name</string>
+    <string name="meta_type">Typ</string>
+    <string name="meta_size">Größe</string>
+    <string name="meta_size_value">%1$s (%2$d Byte)</string>
+    <string name="meta_folder">Ordner</string>
+    <string name="meta_storage_path">Speicherpfad</string>
+    <string name="meta_content_uri">Content-URI</string>
+    <string name="meta_modified">Geändert</string>
+    <string name="meta_library_capture_date">Aufnahmedatum in der Mediathek</string>
+    <string name="meta_camera">Kamera</string>
+    <string name="meta_lens">Objektiv</string>
+    <string name="meta_iso">ISO</string>
+    <string name="meta_aperture">Blende</string>
+    <string name="meta_focal_length">Brennweite</string>
+    <string name="meta_focal_length_value">%s mm</string>
+    <string name="meta_exposure_time">Belichtungszeit</string>
+    <string name="meta_exposure_time_value">%s s</string>
+    <string name="meta_dimensions">Abmessungen</string>
+    <string name="meta_dimensions_value">%1$d × %2$d Pixel</string>
+    <string name="meta_resolution">Auflösung</string>
+    <string name="meta_resolution_value">%s Megapixel</string>
+    <string name="meta_duration">Dauer</string>
+    <string name="meta_duration_value">%s Sekunden</string>
+    <string name="meta_rotation">Drehung</string>
+    <string name="meta_frame_rate">Aufnahme-Bildrate</string>
+    <string name="meta_frame_rate_value">%s fps</string>
+    <string name="meta_bit_rate">Bitrate</string>
+    <string name="meta_bit_rate_value">%d Bit/s</string>
+    <string name="meta_audio_track">Tonspur</string>
+    <string name="meta_audio_present">Vorhanden</string>
+    <string name="meta_audio_none">Keine</string>
+    <string name="meta_container_date">Erstellungsdatum des Containers</string>
+    <string name="meta_coordinates">Koordinaten</string>
+    <string name="meta_embedded_rating">Eingebettete Bewertung</string>
+    <string name="meta_rating_value">%d / 5</string>
+    <string name="meta_location_access">Zugriff auf Fotostandorte</string>
+    <string name="meta_location_access_value">Erlaube den Zugriff auf Fotostandorte, um GPS-Metadaten zu lesen.</string>
+    <string name="meta_gps">GPS-Metadaten</string>
+    <string name="meta_gps_redacted">Der Anbieter konnte die ursprünglichen Standortdaten nicht liefern.</string>
+    <string name="meta_gps_none_photo">In diesem Foto ist kein Standort gespeichert.</string>
+    <string name="meta_gps_none_video">In diesem Video ist kein Standort gespeichert.</string>
+    <string name="meta_notice_unavailable">Das Foto ist derzeit nicht verfügbar. Die gespeicherten Mediathek-Informationen werden unten angezeigt.</string>
+    <string name="meta_notice_video_unreadable">Dateiinformationen sind verfügbar. Die Container-Metadaten dieses Videos konnten nicht gelesen werden.</string>
+    <string name="meta_notice_image_unreadable">Dateiinformationen sind verfügbar. Die eingebetteten Metadaten dieses Bildes konnten nicht gelesen werden.</string>
+
+    <!-- Navigation -->
+    <string name="nav_library">Mediathek</string>
+    <string name="nav_albums">Alben</string>
+    <string name="nav_places">Karte</string>
+    <string name="nav_countries">Länder</string>
+    <string name="nav_settings">Einstellungen</string>
+    <string name="nav_open_menu">Navigationsmenü öffnen</string>
+    <string name="nav_close_library_menu">Mediathek-Menü schließen</string>
+    <string name="nav_library_views">Mediathek-Ansichten</string>
+    <string name="nav_library_menu_expanded">%s, Menü geöffnet</string>
+    <string name="nav_library_menu_collapsed">%s, Menü geschlossen</string>
+    <string name="view_all_items">Alle Elemente</string>
+    <string name="view_photos">Fotos</string>
+    <string name="view_videos">Videos</string>
+    <string name="view_folders">Ordner</string>
+    <string name="back_to_albums">Zurück zu den Alben</string>
+    <string name="back_to_folders">Zurück zu den Ordnern</string>
+    <string name="appearance_dark_state">Dunkle Darstellung</string>
+    <string name="appearance_light_state">Helle Darstellung</string>
+
+    <!-- Library -->
+    <string name="search_placeholder">Einen Moment finden…</string>
+    <string name="search_albums">Alben durchsuchen…</string>
+    <string name="search_media">Fotos und Videos durchsuchen</string>
+    <string name="search_albums_description">Alben durchsuchen</string>
+    <string name="search_clear">Suche löschen</string>
+    <string name="filters_metadata">Metadatenfilter</string>
+    <plurals name="filters_active">
+        <item quantity="one">Metadatenfilter, %d aktiv</item>
+        <item quantity="other">Metadatenfilter, %d aktiv</item>
+    </plurals>
+    <string name="filters_clear">Filter zurücksetzen</string>
+    <string name="filters_clear_all">Alle Filter entfernen</string>
+    <string name="reading_metadata">Metadaten werden gelesen · %1$d/%2$d</string>
+    <plurals name="photo_count">
+        <item quantity="one">%d Foto</item>
+        <item quantity="other">%d Fotos</item>
+    </plurals>
+    <plurals name="item_count">
+        <item quantity="one">%d Element</item>
+        <item quantity="other">%d Elemente</item>
+    </plurals>
+    <string name="manage_media_access">Zugriff auf Fotos und Videos verwalten</string>
+    <string name="library_refresh">Mediathek aktualisieren</string>
+    <string name="empty_album_title">Mach es zu deinem.</string>
+    <string name="empty_library_title">Deine nächste Erinnerung beginnt hier.</string>
+    <string name="empty_filter_title">Keine passenden Momente.</string>
+    <string name="empty_album_message">Füge einzelne Fotos hinzu oder verknüpfe einen Ordner. Deine Originale bleiben, wo sie sind.</string>
+    <string name="empty_library_message">Fotos auf deinem Gerät erscheinen hier.</string>
+    <string name="empty_filter_message">Ändere deine Suche oder die Metadatenfilter.</string>
+    <string name="selection_share">Auswahl teilen</string>
+    <string name="selection_add_to_album">Auswahl zu Album hinzufügen</string>
+    <string name="selection_move">Auswahl in Ordner verschieben</string>
+    <string name="selection_bar_share">Teilen</string>
+    <string name="selection_bar_album">Zu Album</string>
+    <string name="selection_bar_move">Verschieben</string>
+    <string name="selection_bar_remove">Aus Album</string>
+    <string name="welcome_title">Jedes Foto.\nEin bisschen näher.</string>
+    <string name="welcome_message">Finde deine Lieblingsbilder, sammle sie in Alben und besuche die Orte, an denen du warst.</string>
+    <string name="welcome_action">Meine Mediathek öffnen</string>
+    <string name="welcome_footer">AUF DEINEM GERÄT. IN DEINER HAND.</string>
+    <string name="editor_copy_saved">Bearbeitete Kopie gespeichert</string>
+    <string name="move_done">In Ordner verschoben</string>
+    <plurals name="move_done_count">
+        <item quantity="one">%d Element in Ordner verschoben</item>
+        <item quantity="other">%d Elemente in Ordner verschoben</item>
+    </plurals>
+    <string name="move_undo">Rückgängig</string>
+    <string name="move_undone">Zurück verschoben</string>
+    <plurals name="move_undo_failed">
+        <item quantity="one">%d Element konnte nicht zurück verschoben werden</item>
+        <item quantity="other">%d Elemente konnten nicht zurück verschoben werden</item>
+    </plurals>
+    <string name="move_partial">%1$d verschoben, %2$d konnten nicht verschoben werden</string>
+    <string name="move_mixed_note">Movies-Ordner fehlen hier: Android legt dort keine Fotos ab.</string>
+    <string name="external_album_title">Aus deiner Mediathek öffnen</string>
+    <string name="external_album_message">Dieses Foto wurde mit vorübergehendem Zugriff geteilt. Öffne es aus der Mediathek deines Geräts, um es dauerhaft mit einem Album zu verknüpfen.</string>
+    <string name="external_unsupported">Gallery kann Fotos und Videos öffnen, die eine andere App über eine Content-URI teilt.</string>
+    <string name="external_unreadable">Dieses Foto oder Video konnte nicht geöffnet werden. Die App muss eventuell Zugriff gewähren.</string>
+    <string name="storage_internal_path">Interner Speicher · %s</string>
+
+    <!-- Albums -->
+    <plurals name="album_count">
+        <item quantity="one">%d Album</item>
+        <item quantity="other">%d Alben</item>
+    </plurals>
+    <string name="album_missing">Dieses Album existiert nicht mehr.</string>
+    <string name="album_add_photos">Fotos hinzufügen</string>
+    <string name="album_folders_chip">Ordner · %d</string>
+    <string name="album_options">Albumoptionen</string>
+    <string name="album_linked_photos_stay">Fotos aus verknüpften Ordnern bleiben in diesem Album. Entferne die Ordnerverknüpfung, um sie auszuschließen.</string>
+    <string name="album_remove_links">Direkt verknüpfte Fotos aus dem Album entfernen</string>
+    <string name="album_new_title">Eine neue Sammlung</string>
+    <string name="album_create">Album erstellen</string>
+    <string name="album_create_and_add">Erstellen &amp; hinzufügen</string>
+    <string name="album_create_new">Neues Album erstellen</string>
+    <string name="album_destination_hint">Wähle ein Album oder erstelle ein neues.</string>
+    <string name="album_added">Zu „%s“ hinzugefügt</string>
+    <string name="album_rename_title">Sammlung umbenennen</string>
+    <string name="album_delete_title">%s löschen?</string>
+    <string name="album_delete_message">Dadurch werden das Album und seine Verknüpfungen entfernt. Deine Fotos und Ordner bleiben an ihrem ursprünglichen Ort.</string>
+    <string name="album_keep">Album behalten</string>
+    <string name="album_virtual">Virtuelles Album</string>
+    <string name="album_summary">%1$s · %2$s</string>
+    <string name="album_name">Albumname</string>
+    <string name="album_name_explanation">Ein Album sammelt Verweise auf deine Fotos. Die Originale bleiben, wo sie sind.</string>
+    <plurals name="album_add_count">
+        <item quantity="one">%d Foto hinzufügen</item>
+        <item quantity="other">%d Fotos hinzufügen</item>
+    </plurals>
+    <string name="album_linked_folders_message">Nimmt aktuelle und künftige Fotos aus einem Ordner und seinen Unterordnern auf. Dateien bleiben, wo sie sind.</string>
+    <string name="album_no_folders">Noch keine zugänglichen Ordner. Erlaube den Fotozugriff in den App-Einstellungen.</string>
+    <string name="album_save_links">Verknüpfungen speichern</string>
+    <string name="albums_empty_title">Platz für eine Sammlung.</string>
+    <string name="albums_empty_message">Ein Wochenende weg. Deine besten Bilder. Verknüpfe Fotos und ganze Ordner, ohne etwas zu verschieben.</string>
+    <string name="albums_empty_action">Erstes Album erstellen</string>
+    <string name="picker_title">Fotos auswählen</string>
+    <string name="picker_add">Hinzufügen (%d)</string>
+    <string name="picker_empty_title">Keine Fotos verfügbar.</string>
+    <string name="picker_empty_message">Erlaube den Fotozugriff in den App-Einstellungen und füge dann Fotos zu diesem Album hinzu.</string>
+    <string name="cover_cancel">Albumbild-Auswahl abbrechen</string>
+    <string name="cover_title">Albumbild</string>
+    <string name="cover_message">Wähle ein Foto aus %s.</string>
+    <string name="cover_reset">Automatisches Albumbild verwenden</string>
+    <string name="cover_empty_title">Zuerst Fotos hinzufügen</string>
+    <string name="cover_empty_message">Die Fotos deines Albums erscheinen hier als Vorschaubilder.</string>
+    <string name="widget_pin_manually">Wähle „Gallery-Album %s“ in der Widget-Auswahl deines Launchers.</string>
+
+    <!-- Errors -->
+    <string name="error_saved_data">Gespeicherte Alben und Bewertungen konnten nicht geladen werden.</string>
+    <string name="error_access_changed">Der Fotozugriff hat sich geändert. Erlaube den Zugriff, um deine Mediathek zu aktualisieren.</string>
+    <string name="error_library">Deine Mediathek konnte nicht geladen werden. Versuche „Mediathek scannen“ in den Einstellungen.</string>
+    <string name="error_change">Die Änderung konnte nicht gespeichert werden.</string>
+    <string name="error_album_create">Das Album konnte nicht erstellt werden.</string>
+    <string name="error_album_missing">Das Album existiert nicht mehr.</string>
+    <string name="error_album_exists">Es gibt bereits ein Album mit diesem Namen.</string>
+    <string name="error_album_name_empty">Gib einen Albumnamen ein.</string>
+    <string name="error_album_name_long">Albumnamen dürfen höchstens 120 Zeichen lang sein.</string>
+
+    <!-- Settings page -->
+    <string name="theme_system">System</string>
+    <string name="theme_light">Hell</string>
+    <string name="theme_dark">Dunkel</string>
+    <string name="settings_section_appearance">Darstellung &amp; Start</string>
+    <string name="settings_section_photos">Fotos</string>
+    <string name="settings_section_folders">Ordner</string>
+    <string name="settings_section_library">Mediathek &amp; Zugriff</string>
+    <string name="settings_appearance">Darstellung</string>
+    <string name="settings_start_page">Startseite</string>
+    <string name="settings_rotate_viewer_only">Nur beim Ansehen von Fotos drehen</string>
+    <string name="settings_rotate_viewer_only_subtitle">Die Mediathek bleibt hochkant; Fotos und der Editor drehen sich mit dem Handy.</string>
+    <string name="settings_folders_per_row">Ordner pro Reihe</string>
+    <string name="settings_scan">Mediathek scannen</string>
+    <string name="settings_scan_subtitle">Fotos, Videos und Metadaten</string>
+    <string name="settings_media_access">Medienzugriff</string>
+    <string name="settings_about">Über Gallery</string>
+    <string name="settings_privacy">Datenschutzerklärung</string>
+    <string name="privacy_policy_asset">privacy-policy-de.html</string>
+    <string name="settings_close_info">%s schließen</string>
+    <string name="access_full">Voller Zugriff</string>
+    <string name="access_limited">Eingeschränkter Zugriff</string>
+    <string name="access_none">Nicht erlaubt</string>
+    <string name="media_management_offer_title">Soll Android nicht mehr jedes Mal fragen?</string>
+    <string name="media_management_offer_message">Android fragt jedes Mal nach, wenn Gallery Fotos verschiebt oder in den Papierkorb legt. Du kannst das einmalig in den Android-Einstellungen abschalten, indem du Gallery die „Medienverwaltung“ erlaubst. Gelöschte Fotos bleiben weiterhin 30 Tage im Papierkorb.\n\nSpäter änderst du das unter Einstellungen, Mediathek &amp; Zugriff.</string>
+    <string name="media_management_offer_open">Einstellungen öffnen</string>
+    <string name="media_management_offer_later">Nicht jetzt</string>
+    <string name="settings_media_management">Verschieben und Löschen ohne Nachfrage</string>
+    <string name="settings_media_management_off">Android fragt jedes Mal nach, wenn Gallery Fotos verschiebt oder in den Papierkorb legt. Erlaube „Medienverwaltung“ in den Android-Einstellungen, um dieses Fenster zu überspringen.</string>
+    <string name="settings_media_management_on">Android fragt nicht mehr nach, wenn Gallery Fotos verschiebt oder in den Papierkorb legt. Gelöschte Elemente bleiben 30 Tage im Papierkorb.</string>
+    <string name="access_allowed">Erlaubt</string>
+    <string name="access_not_allowed">Nicht erlaubt</string>
+    <string name="about_version">Gallery %1$s · %2$d Elemente</string>
+    <string name="about_ratings_title">Fotobewertungen</string>
+    <string name="about_ratings_body">In den Dateien gespeicherte Bewertungen (XMP und EXIF) werden angezeigt und können zum Filtern und Sortieren genutzt werden. Gallery fügt keine Bewertungen hinzu und ändert keine. Externe .xmp-Begleitdateien werden nicht gelesen.</string>
+    <string name="about_gestures_title">Gesten beim Durchsuchen</string>
+    <string name="about_gestures_body">Zieh zwei Finger zusammen, um mehr Fotos nebeneinander zu sehen, oder auseinander für größere Bilder. Halte gedrückt und zieh, um mehr auszuwählen. Im Auswahlmodus wählst du mit einer seitlichen Wischbewegung einen Bereich.</string>
+    <string name="about_viewer_title">Fotoansicht</string>
+    <string name="about_viewer_body">Tippe auf ein Foto, um die Bedienelemente ein- oder auszublenden – deine Wahl bleibt beim Wischen erhalten. Wisch nach oben für Details und nach unten zum Schließen. Zum Zoomen doppelt tippen oder Finger auseinanderziehen.</string>
+    <string name="about_maps_title">Karten &amp; Quellen</string>
+    <string name="about_maps_body">Für neue Kartenbereiche ist Internet nötig. Einfach: OpenFreeMap / OpenStreetMap. Satellit: EOX Sentinel-2 cloudless (2025), für private, nicht kommerzielle Nutzung.</string>
+    <string name="media_info_full">Gallery kann alle Fotos und Videos auf diesem Gerät anzeigen.</string>
+    <string name="media_info_limited">Gallery kann die Fotos und Videos anzeigen, die Android freigegeben hat.</string>
+    <string name="media_info_none">Erlaube den Medienzugriff, um Fotos und Videos auf diesem Gerät zu durchsuchen.</string>
+    <string name="media_allow_more">Mehr Fotos und Videos erlauben</string>
+    <string name="media_allow">Fotos und Videos erlauben</string>
+    <string name="gps_info_allowed">Gallery kann GPS-Metadaten von Fotos lesen, um zu zeigen, wo sie aufgenommen wurden.</string>
+    <string name="gps_info_missing">Erlaube GPS-Metadaten von Fotos, um zu zeigen, wo sie aufgenommen wurden. Dein aktueller Standort wird dabei nicht abgefragt.</string>
+    <string name="gps_allow">GPS-Metadaten von Fotos erlauben</string>
+
+    <!-- Hidden media -->
+    <string name="hidden_title">Versteckt</string>
+    <string name="hidden_setup_title">Versteckte Medien einrichten</string>
+    <string name="hidden_setup_message">Fotos und Videos in .nomedia- und Punkt-Ordnern bleiben auf dieser Seite. Sie erscheinen nie in der Mediathek, auf der Karte, unter Länder, in der Suche oder in Widgets.</string>
+    <string name="hidden_storage_allow">Speicherzugriff erlauben</string>
+    <string name="hidden_choose_folder">Ordner wählen</string>
+    <string name="hidden_scanning">Versteckte Medien werden gesucht…</string>
+    <string name="hidden_empty_title">Keine versteckten Medien gefunden</string>
+    <string name="hidden_empty_message">Gallery hat keine Fotos oder Videos in .nomedia- oder Punkt-Ordnern gefunden. Unter „Zugriff verwalten“ kannst du Ordner hinzufügen.</string>
+    <string name="hidden_manage">Zugriff verwalten</string>
+    <string name="hidden_access_title">Zugriff auf versteckte Medien</string>
+    <string name="hidden_thumbnail_caches_needs_access">Verfügbar, sobald der Zugriff auf alle Dateien auf der Seite „Versteckt“ erlaubt ist.</string>
+    <string name="hidden_show">Seite „Versteckt“</string>
+    <string name="hidden_show_subtitle">Fügt „Versteckt“ zum Seitenmenü hinzu: Fotos und Videos in .nomedia- und Punkt-Ordnern, zum Beispiel .thumbnails oder WhatsApp-Status. Sie erscheinen nie in der Mediathek.</string>
+    <string name="hidden_all_files">Zugriff auf alle Dateien</string>
+    <string name="hidden_all_files_on">Versteckte Ordner auf allen Speichern werden automatisch gefunden.</string>
+    <string name="hidden_all_files_off">Nötig, um versteckte Ordner automatisch zu finden.</string>
+    <string name="hidden_all_files_explanation">Android hält versteckte Ordner aus dem normalen Fotozugriff heraus. Mit dem Zugriff auf alle Dateien sucht Gallery selbst danach. Gallery liest diese Dateien nur und ändert nie .nomedia. Nur „Löschen“ in Gallery entfernt eine Datei.</string>
+    <string name="hidden_all_files_allow">Zugriff auf alle Dateien erlauben</string>
+    <string name="hidden_all_files_unavailable">Die Android-Einstellung für den Zugriff auf alle Dateien konnte nicht geöffnet werden.</string>
+    <string name="hidden_storage_access">Speicherzugriff</string>
+    <string name="hidden_storage_access_subtitle">Auf dieser Android-Version zusammen mit dem Foto- und Videozugriff erteilt.</string>
+    <string name="hidden_thumbnail_caches">Miniaturansicht-Caches einbeziehen</string>
+    <string name="hidden_thumbnail_caches_subtitle">Die .thumbnails-Ordner von Android enthalten kleine Kopien von Fotos, die deine Bilder doppelt zeigen.</string>
+    <string name="hidden_specific_folders">Bestimmte Ordner</string>
+    <string name="hidden_specific_folders_explanation">Oder erlaube in der Ordnerauswahl von Android nur ausgewählte Ordner, zum Beispiel DCIM oder Pictures.</string>
+    <string name="hidden_folders_only_explanation">Erlaube in der Ordnerauswahl von Android Ordner wie DCIM oder Pictures. Gallery zeigt dann die Fotos und Videos in deren .nomedia- und Punkt-Ordnern.</string>
+    <string name="hidden_specific_folders_optional">Optional: Ordner von anderen Speicheranbietern hinzufügen.</string>
+    <string name="hidden_add_folder">Ordner hinzufügen</string>
+    <string name="hidden_media_folder">Medienordner</string>
+    <string name="hidden_folder_allow_again">Ordnerzugriff erneut erlauben</string>
+    <string name="hidden_folder_included">Wird unter „Versteckt“ angezeigt</string>
+    <string name="hidden_folder_unavailable">Zugriff nicht verfügbar · Tippen, um ihn erneut zu erlauben</string>
+    <string name="hidden_folder_checking">Zugriff wird geprüft…</string>
+    <string name="hidden_folder_forget">Medienordner %s entfernen</string>
+    <string name="hidden_folder_not_saved">Der Ordnerzugriff konnte nicht gespeichert werden. Bitte wähle den Ordner erneut.</string>
+    <string name="hidden_picker_unavailable">Die Ordnerauswahl von Android ist nicht verfügbar.</string>
+
+    <!-- Map privacy -->
+    <string name="map_privacy_title">Fotostandorte und die Karte</string>
+    <string name="map_privacy_body">Fotokoordinaten verlassen nie dein Telefon, und Länder werden offline erkannt. Um die Karte zu zeichnen, lädt Gallery Kartenkacheln von OpenFreeMap (Einfach) oder EOX (Satellit). Wie bei jedem Kartendienst sehen diese Server, welche Bereiche geladen werden. Das kann Hinweise darauf geben, wo deine Fotos entstanden sind.</string>
+    <string name="map_privacy_show">Über Fotostandorte</string>
+    <string name="map_consent_title">Online-Karte laden?</string>
+    <string name="map_consent_body">Die Koordinaten deiner Fotos bleiben auf dem Handy. Um die Karte zu zeichnen, lädt Gallery Kartenbilder von OpenFreeMap (Einfach) oder EOX (Satellit). Diese Server sehen deine IP-Adresse und welche Gebiete geladen werden. Das kann verraten, wo deine Fotos entstanden sind.</string>
+    <string name="map_consent_off_title">Die Online-Karte ist aus</string>
+    <string name="map_consent_off_body">Solange sie aus ist, wird nichts heruntergeladen. Die Länder funktionieren immer offline.</string>
+    <string name="map_consent_allow">Karte laden</string>
+    <string name="map_consent_not_now">Nicht jetzt</string>
+    <string name="map_consent_hint">Du kannst sie jederzeit wieder ausschalten: mit dem Schild-Knopf auf der Karte oder in den Einstellungen.</string>
+    <string name="map_turn_off">Online-Karte ausschalten</string>
+    <string name="settings_section_map">Karte</string>
+    <string name="settings_online_map">Online-Karte</string>
+    <string name="settings_online_map_subtitle">Lädt Kartenbilder von OpenFreeMap oder EOX. Ausgeschaltet wird nichts heruntergeladen, und gespeicherte Kartenbilder werden gelöscht.</string>
+
+    <!-- Grid -->
+    <string name="grid_state">%1$s, %2$s</string>
+    <string name="grid_select_month">Alle aus %s auswählen</string>
+    <string name="grid_month_selection">%1$d von %2$d in %3$s ausgewählt</string>
+    <string name="grid_selected">Ausgewählt</string>
+    <string name="grid_not_selected">Nicht ausgewählt</string>
+    <string name="grid_video">Video</string>
+    <string name="grid_has_gps">Mit GPS-Standort</string>
+    <string name="grid_select_item">%s auswählen</string>
+    <string name="grid_date_unavailable">Datum unbekannt</string>
+
+    <!-- Widgets -->
+    <string name="widget_label_1x1">Gallery-Album · 1 × 1</string>
+    <string name="widget_label_2x1">Gallery-Album · 2 × 1</string>
+    <string name="widget_label_1x2">Gallery-Album · 1 × 2</string>
+    <string name="widget_label_2x2">Gallery-Album · 2 × 2</string>
+    <string name="widget_description">Ein Fotoalbum auf deinem Startbildschirm</string>
+    <string name="widget_configure_title">Album für das Widget wählen</string>
+    <string name="widget_choose_album">Album wählen</string>
+    <string name="widget_choose_album_detail">Tippen, um ein Album zu wählen</string>
+    <string name="widget_album_unavailable">Album nicht verfügbar</string>
+    <string name="widget_tap_to_open">Tippen, um Gallery zu öffnen</string>
+    <string name="widget_album_removed">Album entfernt</string>
+    <string name="widget_album_removed_detail">Tippen, um ein anderes Album zu wählen</string>
+    <string name="widget_allow_access">Fotozugriff in Gallery erlauben</string>
+    <string name="widget_tap_to_refresh">Tippen, um in Gallery zu aktualisieren</string>
+    <string name="widget_no_photos">Keine zugänglichen Fotos</string>
+    <plurals name="video_count">
+        <item quantity="one">%d Video</item>
+        <item quantity="other">%d Videos</item>
+    </plurals>
+    <string name="widget_open_album">%1$s. %2$s. Album öffnen</string>
+
+    <!-- Map -->
+    <string name="map_description">Fotokarte</string>
+    <string name="map_unavailable">Karte nicht verfügbar</string>
+    <string name="map_loading_state">Karte wird geladen</string>
+    <string name="map_ready">Karte bereit</string>
+    <string name="map_restore">Karte verkleinern</string>
+    <string name="map_maximize">Karte maximieren</string>
+    <string name="map_use_simple">Einfache Karte verwenden</string>
+    <string name="map_unlock_title">Fotostandorte freischalten</string>
+    <string name="map_unlock_message">Erlaube den Zugriff auf Standort-Metadaten, um deine Bilder auf der Karte zu platzieren.</string>
+    <string name="map_unlock_action">Fotostandorte erlauben</string>
+    <string name="map_no_locations_title">Keine Standorte in dieser Ansicht</string>
+    <string name="map_no_photos_message">Wähle Fotos aus oder passe deine Filter an, um ihre Standorte zu erkunden.</string>
+    <string name="map_no_gps_message">Diese Fotos haben keine GPS-Metadaten. Fotos mit gespeicherten Koordinaten erscheinen hier.</string>
+    <string name="map_fit">Alle Fotostandorte anzeigen</string>
+    <string name="map_loading">Wird geladen…</string>
+    <plurals name="map_photo_count">
+        <item quantity="one">%d Foto auf der Karte</item>
+        <item quantity="other">%d Fotos auf der Karte</item>
+    </plurals>
+    <string name="map_place_title">Ein Ort zum Erinnern</string>
+    <plurals name="map_place_count">
+        <item quantity="one">%d Foto an diesem Ort</item>
+        <item quantity="other">%d Fotos an diesem Ort</item>
+    </plurals>
+    <string name="map_place_close">Fotos an diesem Ort schließen</string>
+    <string name="map_fonts_credit">Schriften: OpenFreeMap</string>
+    <string name="map_error_load">Die Karte konnte nicht geladen werden. Prüfe deine Internetverbindung und versuche es erneut.</string>
+    <string name="map_error_slow">Die Kartenkacheln laden zu lange. Prüfe deine Internetverbindung und versuche es erneut.</string>
+    <string name="map_style_simple">Einfach</string>
+    <string name="map_style_satellite">Satellit</string>
+    <string name="widget_cover_description">Albumbild</string>
+    <string name="widget_configure_heading">Album-Widget</string>
+    <string name="widget_configure_message">Wähle das Album, das auf deinem Startbildschirm erscheinen soll.</string>
+    <string name="widget_configure_failed">Die Alben konnten nicht geladen werden. Öffne Gallery und versuche es erneut.</string>
+    <string name="widget_configure_empty">Erstelle zuerst ein Album in Gallery und komm dann hierher zurück.</string>
+    <string name="widget_configure_open_gallery">Gallery öffnen</string>
+
+    <!-- Countries -->
+    <string name="countries_all">Alle Länder</string>
+    <string name="countries_subtitle">Deine Fotos, gruppiert nach dem Ort der Aufnahme.</string>
+    <string name="countries_permission_message">Gallery braucht Zugriff auf die GPS-Metadaten deiner Fotos, um sie nach Ländern zu gruppieren. Die Koordinaten bleiben auf deinem Gerät.</string>
+    <string name="countries_empty_title">Keine Fotos zum Gruppieren</string>
+    <string name="countries_empty_message">Fotos mit gespeicherten GPS-Metadaten erscheinen hier nach Ländern.</string>
+    <string name="countries_offline_note">Funktioniert offline · inklusive Inseln und Küsten</string>
+    <string name="countries_no_location">Kein Standort</string>
+    <string name="countries_not_scanned">Noch nicht gescannt</string>
+    <string name="countries_unmatched">GPS ohne Land</string>
+    <string name="countries_no_location_message">Diese Fotos haben keine lesbaren GPS-Koordinaten in ihren Metadaten.</string>
+    <string name="countries_not_scanned_message">Länderinformationen erscheinen, sobald Gallery die Foto-Metadaten gelesen hat. Du kannst die Mediathek auch in den Einstellungen scannen.</string>
+    <string name="countries_unmatched_message">Diese GPS-Koordinaten liegen mehr als 25 km von jedem Land auf der mitgelieferten Karte entfernt, zum Beispiel auf dem Meer.</string>
+
+    <!-- Photo editor -->
+    <string name="editor_title">Foto bearbeiten</string>
+    <string name="editor_close">Editor schließen</string>
+    <string name="editor_discard_title">Bearbeitungen verwerfen?</string>
+    <string name="editor_discard_message">Deine Änderungen an diesem Foto gehen verloren. Das Original bleibt unverändert.</string>
+    <string name="editor_discard">Verwerfen</string>
+    <string name="editor_keep">Weiter bearbeiten</string>
+    <string name="editor_saving">Wird gespeichert…</string>
+    <string name="editor_save_copy">Kopie speichern</string>
+    <string name="editor_canvas">Zeichenfläche für das Foto</string>
+    <string name="editor_canvas_state">%1$d Striche, %2$d Grad, %3$s</string>
+    <string name="editor_pen">Stift</string>
+    <string name="editor_undo">Rückgängig</string>
+    <string name="editor_clear">Striche löschen</string>
+    <string name="editor_rotate">Um 90 Grad im Uhrzeigersinn drehen</string>
+    <string name="editor_width">Breite</string>
+    <string name="editor_pen_width">Stiftbreite</string>
+    <string name="editor_crop">Zuschneiden</string>
+    <string name="editor_output_hint">JPEG-Kopie · Pictures/Gallery · bis 4.096 px</string>
+    <string name="editor_output_hint_legacy">JPEG-Kopie · Speicherort wählen · bis 4.096 px</string>
+    <string name="pen_white">Weißer Stift</string>
+    <string name="pen_black">Schwarzer Stift</string>
+    <string name="pen_red">Roter Stift</string>
+    <string name="pen_orange">Oranger Stift</string>
+    <string name="pen_green">Grüner Stift</string>
+    <string name="pen_blue">Blauer Stift</string>
+    <string name="pen_pink">Pinker Stift</string>
+    <string name="crop_original">Original</string>
+    <string name="crop_square">Quadrat</string>
+    <string name="crop_four_three">4:3</string>
+    <string name="crop_wide">16:9</string>
+    <string name="crop_free">Frei</string>
+    <string name="crop_three_four">3:4</string>
+    <string name="crop_tall">9:16</string>
+    <string name="editor_crop_hint">Ecken oder Kanten ziehen, um zuzuschneiden; innerhalb des Rahmens ziehen, um ihn zu verschieben.</string>
+    <string name="editor_crop_reset">Zuschnitt zurücksetzen</string>
+    <string name="editor_crop_none">nicht zugeschnitten</string>
+    <string name="editor_crop_size">zugeschnitten auf %1$d × %2$d px</string>
+    <string name="edit_error_video">Videos können nicht bearbeitet werden.</string>
+    <string name="edit_error_open">Dieses Foto konnte nicht zum Bearbeiten geöffnet werden.</string>
+    <string name="edit_error_open_file">Dieses Foto konnte nicht geöffnet werden.</string>
+    <string name="edit_error_format">Dieses Fotoformat kann nicht bearbeitet werden.</string>
+    <string name="edit_error_memory_open">Nicht genug freier Speicher, um dieses Foto zu bearbeiten. Schließe andere Fotos und versuche es erneut.</string>
+    <string name="edit_error_memory_save">Nicht genug freier Speicher, um diese Kopie zu speichern. Schließe andere Apps und versuche es erneut.</string>
+    <string name="edit_error_save">Die Kopie konnte nicht gespeichert werden. Bitte versuche es erneut.</string>
+    <string name="edit_error_overwrite">Wähle eine neue Datei. Das Originalfoto kann nicht überschrieben werden.</string>
+    <string name="edit_error_create">Die bearbeitete Kopie konnte nicht erstellt werden.</string>
+    <string name="edit_error_location">Wähle einen Speicherort für die bearbeitete Kopie.</string>
+    <string name="edit_error_encode">Die bearbeitete Kopie konnte nicht kodiert werden.</string>
+    <string name="edit_error_write">Die bearbeitete Kopie konnte nicht geschrieben werden.</string>
+    <string name="edit_error_publish">Die bearbeitete Kopie konnte nicht veröffentlicht werden.</string>
+    <string name="edit_error_verify">Das Originalfoto oder der Speicherort der Kopie konnte nicht geprüft werden.</string>
+
+    <!-- Move -->
+    <string name="move_action">Verschieben</string>
+    <string name="move_from">Aus %s</string>
+    <string name="move_new_folder">Neuer Ordner</string>
+    <string name="move_folder_name">Ordnername</string>
+    <string name="move_folder_in">In %s</string>
+    <string name="move_same_folder">Dieses Element liegt bereits in diesem Ordner.</string>
+    <string name="move_cancelled">Verschieben abgebrochen. Das Element wurde nicht verschoben.</string>
+    <string name="move_request_failed">Android konnte die Anfrage für den Schreibzugriff nicht öffnen.</string>
+    <string name="move_not_possible">Dieses Element kann nicht verschoben werden.</string>
+    <string name="move_requires_android_10">Zum Verschieben ist Android 10 oder neuer nötig.</string>
+    <string name="move_open_from_library">Öffne dieses Element aus der Mediathek, bevor du es verschiebst.</string>
+    <string name="move_item_gone">Dieses Element ist nicht mehr verfügbar.</string>
+    <string name="move_incompatible_folder">Wähle einen passenden Foto- oder Videoordner.</string>
+    <string name="move_failed_removed">Das Element konnte nicht verschoben werden. Es wurde möglicherweise entfernt oder der Zugriff hat sich geändert.</string>
+    <string name="move_write_denied">Android hat keinen Schreibzugriff erteilt. Das Element wurde nicht verschoben.</string>
+    <string name="move_write_unavailable">Android konnte keinen Schreibzugriff für dieses Element erteilen.</string>
+    <string name="move_not_allowed">Android erlaubt nicht, dieses Element in diesen Ordner zu verschieben.</string>
+    <string name="move_failed_storage">Das Element konnte nicht verschoben werden. Prüfe, ob der Speicher verfügbar ist, und versuche es erneut.</string>
+
+    <!-- Fallback names -->
+    <string name="external_opened_photo">Geöffnetes Foto</string>
+    <string name="external_opened_video">Geöffnetes Video</string>
+    <string name="storage_fallback">Speicher</string>
+    <string name="hidden_selected_folder">Ausgewählter Ordner</string>
+
+    <!-- Sorting -->
+    <string name="sort_description">Fotos sortieren</string>
+    <string name="sort_newest">Neueste zuerst</string>
+    <string name="sort_oldest">Älteste zuerst</string>
+    <string name="sort_rating">Beste Bewertung</string>
+    <string name="sort_name">Dateiname</string>
+    <string name="sort_newest_short">Neueste</string>
+    <string name="sort_oldest_short">Älteste</string>
+    <string name="sort_rating_short">Bewertung</string>
+    <string name="sort_name_short">Name</string>
+
+    <!-- Search and filters -->
+    <string name="search_all_filters">Alle Filter</string>
+    <string name="search_back_to_search">Zurück zur Suche</string>
+    <string name="search_back_previous">Zurück zur vorherigen Ansicht</string>
+    <string name="search_back_to_library">Zurück zur Mediathek</string>
+    <string name="search_text_label">Textsuche: %s</string>
+    <string name="search_clear_text">Textsuche löschen</string>
+    <string name="search_favorites">Favoriten</string>
+    <string name="search_manage_favorites">Favoriten verwalten</string>
+    <string name="search_often_used">Häufig genutzt</string>
+    <string name="search_show_results">Ergebnisse anzeigen</string>
+    <string name="search_show_results_count">%s anzeigen</string>
+    <string name="search_replace">Ersetzen</string>
+    <string name="search_replace_title">%s ersetzen?</string>
+    <string name="search_replace_message">%1$s verwendet einen anderen Wert für %2$s. Deine anderen Filter und dein Suchtext bleiben ausgewählt.</string>
+    <string name="search_field_placeholder">Namen, Ordner suchen…</string>
+    <string name="search_favorites_empty">Markiere einen Filter oder eine Auswahl mit einem Stern, um sie hier zu speichern.</string>
+    <string name="search_favorites_dialog_empty">Markiere einen Filter oder eine Auswahl mit einem Stern, um einen Favoriten anzulegen.</string>
+    <string name="quick_four_stars">4+ Sterne</string>
+    <string name="quick_unrated">Unbewertet</string>
+    <string name="quick_with_gps">Mit GPS</string>
+    <string name="favorite_on_map">Auf der Karte</string>
+    <string name="favorite_add">Favorit %s hinzufügen</string>
+    <string name="favorite_edit">Favorit %s bearbeiten</string>
+    <string name="favorite_delete">Favorit %s löschen</string>
+    <string name="favorite_name">Name des Favoriten</string>
+    <string name="favorite_save_title">Favorit speichern</string>
+    <string name="favorite_edit_title">Favorit bearbeiten</string>
+    <plurals name="filters_selected">
+        <item quantity="one">%d ausgewählter Filter</item>
+        <item quantity="other">%d ausgewählte Filter</item>
+    </plurals>
+    <string name="field_rating">Bewertung</string>
+    <string name="field_iso">ISO</string>
+    <string name="field_aperture">Blende</string>
+    <string name="field_focal_length">Brennweite</string>
+    <string name="field_resolution">Auflösung</string>
+    <string name="field_file_size">Dateigröße</string>
+    <string name="field_width">Breite</string>
+    <string name="field_height">Höhe</string>
+    <string name="field_date_taken">Aufnahmedatum</string>
+    <string name="unit_stars">Sterne</string>
+    <plurals name="rating_stars">
+        <item quantity="one">%d Stern</item>
+        <item quantity="other">%d Sterne</item>
+    </plurals>
+    <string name="filter_date">Datum</string>
+    <string name="filter_without_gps">Ohne GPS</string>
+    <string name="filter_camera_chip">Kamera · %s</string>
+    <string name="filter_folder_chip">Ordner · %s</string>
+    <string name="filter_storage_root">Speicherstamm</string>
+    <string name="filter_remove">Filter %s entfernen</string>
+    <string name="filter_edit">Filter %s bearbeiten</string>
+    <string name="filter_add">Filter %s hinzufügen</string>
+    <string name="filter_favorite_selected">Ausgewählte Filter als Favorit speichern</string>
+    <string name="filter_favorite_this">Diesen Filter als Favorit speichern</string>
+    <string name="filter_close_editor">Filtereditor schließen</string>
+    <string name="filter_selected">Ausgewählte Filter</string>
+    <string name="filter_none_selected">Keine Filter ausgewählt</string>
+    <string name="filter_all_must_match">Alle Bedingungen müssen erfüllt sein.</string>
+    <string name="filter_add_filters">Filter hinzufügen</string>
+    <string name="filter_category_rating_hint">Sterne und unbewertete Fotos</string>
+    <string name="filter_category_date_hint">Vor, nach oder an einem Datum</string>
+    <string name="filter_category_camera">Kamera &amp; Belichtung</string>
+    <string name="filter_category_camera_hint">Kamera, ISO, Blende und Brennweite</string>
+    <string name="filter_category_location_hint">Mit oder ohne GPS</string>
+    <string name="filter_category_size">Bildgröße</string>
+    <string name="filter_category_size_hint">Auflösung, Breite und Höhe</string>
+    <string name="filter_category_files">Dateien &amp; Ordner</string>
+    <string name="filter_category_files_hint">Ordner und Dateigröße</string>
+    <string name="filter_unknown_note">Fotos mit unbekannten Metadaten werden bei Vergleichen ausgeschlossen. Eine Bewertung von 0 bedeutet unbewertet.</string>
+    <string name="filter_date_value">Datum · JJJJ-MM-TT</string>
+    <string name="filter_value">Wert</string>
+    <string name="filter_value_unit">Wert · %s</string>
+    <string name="filter_hint_date">Verglichen wird das Kalenderdatum in deiner Zeitzone.</string>
+    <string name="filter_hint_rating">0 = unbewertet · 5 = fünf Sterne</string>
+    <string name="filter_hint_size">1 MB = 1.000.000 Byte</string>
+    <string name="filter_error_date">Gib ein gültiges Datum ein: JJJJ-MM-TT.</string>
+    <string name="filter_error_number">Gib eine gültige Zahl ein.</string>
+    <string name="filter_error_rating">Gib eine ganze Zahl von 0 bis 5 ein.</string>
+    <string name="filter_error_iso">ISO muss eine ganze Zahl ab 1 sein.</string>
+    <string name="filter_error_pixels">Gib eine positive ganze Pixelzahl ein.</string>
+    <string name="filter_error_positive">Gib einen Wert größer als null ein.</string>
+    <string name="filter_add_condition">Weitere Bedingung hinzufügen</string>
+    <string name="filter_search_cameras">Kameras suchen</string>
+    <string name="filter_search_folders">Ordner suchen</string>
+    <string name="filter_all_cameras">Alle Kameras</string>
+    <string name="filter_all_folders">Alle Ordner</string>
+    <string name="filter_any_location">Beliebiger Standort</string>
+    <string name="filter_no_matching">Keine passenden Einträge</string>
+    <string name="filter_no_cameras">Keine Kamera-Metadaten gefunden.</string>
+    <string name="filter_no_folders">Keine Ordner gefunden.</string>
+    <string name="filter_counting">Wird gezählt…</string>
+    <string name="filter_check_value">Wert prüfen</string>
+    <string name="filter_update">Aktualisieren</string>
+    <string name="filter_add_action">Filter hinzufügen</string>
+    <string name="filter_comparison">Vergleich</string>
+    <string name="filter_choose_comparison">Vergleich wählen</string>
+    <string name="filter_apply">Filter anwenden</string>
+    <string name="op_before">Vor</string>
+    <string name="op_on_or_before">Am oder vor</string>
+    <string name="op_on">Am</string>
+    <string name="op_not_on">Nicht am</string>
+    <string name="op_on_or_after">Am oder nach</string>
+    <string name="op_after">Nach</string>
+    <string name="op_less">Kleiner als</string>
+    <string name="op_less_or_equal">Kleiner oder gleich</string>
+    <string name="op_equal">Gleich</string>
+    <string name="op_not_equal">Ungleich</string>
+    <string name="op_greater_or_equal">Größer oder gleich</string>
+    <string name="op_greater">Größer als</string>
+
+    <!-- Lists, folder arrangement and info -->
+    <string name="layout_list">Liste</string>
+    <string name="arrangement_list_state">%1$s, %2$s</string>
+    <string name="folder_arrangement_title">Ordneranordnung</string>
+    <string name="folder_arrangement_preview_description">Ordnervorschau: %1$s</string>
+    <string name="settings_rounded_folder_corners">Abgerundete Ordnerecken</string>
+    <string name="folder_info">Ordnerinformationen</string>
+    <string name="folder_info_location">Speicherort</string>
+    <string name="folder_info_contents">Inhalt</string>
+    <string name="media_locations_missing">Fotostandorte nicht erlaubt</string>
+    <string name="media_locations_title">Fotostandorte</string>
+</resources>

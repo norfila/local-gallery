@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Album widget in "System" appearance follows the launcher's light or dark mode. -->
+    <color name="widget_surface_auto">#EEF3E6</color>
+    <color name="widget_image_auto">#DDE7D3</color>
+    <color name="widget_icon_auto">#476747</color>
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <!-- Deleting on Android 8-10, where there is no system bin or consent dialog. -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
+    <!-- Optional, Android 12+: once the user allows "Media management" in Android's settings, moving, binning and
+         deleting no longer open Android's confirmation window each time. Off until the user turns it on there. -->
+    <uses-permission android:name="android.permission.MANAGE_MEDIA" tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- "Set as wallpaper" when the phone has no crop-and-set screen of its own; a normal, install-time permission. -->
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <queries>
+        <!-- Android's crop-and-set wallpaper screen, which "Set as wallpaper" opens first. -->
+        <intent>
+            <action android:name="android.service.wallpaper.CROP_AND_SET_WALLPAPER" />
+            <data android:mimeType="image/*" />
+        </intent>
+    </queries>
+    <application
+        android:name=".GalleryApplication"
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Luma">
+        <receiver android:name=".widget.AlbumWidgetProvider" android:exported="false" android:label="@string/widget_label_1x1">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/album_widget_info" />
+        </receiver>
+        <receiver android:name=".widget.WideAlbumWidgetProvider" android:exported="false" android:label="@string/widget_label_2x1">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/album_widget_wide_info" />
+        </receiver>
+        <receiver android:name=".widget.TallAlbumWidgetProvider" android:exported="false" android:label="@string/widget_label_1x2">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/album_widget_tall_info" />
+        </receiver>
+        <receiver android:name=".widget.LargeAlbumWidgetProvider" android:exported="false" android:label="@string/widget_label_2x2">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/album_widget_large_info" />
+        </receiver>
+        <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.files"
+            android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+        </provider>
+        <activity android:name=".widget.AlbumWidgetConfigureActivity" android:exported="true" android:label="@string/widget_configure_title">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" /></intent-filter>
+        </activity>
+        <!-- Compose re-lays out on rotation, resizing and dark mode itself; rebuilding the activity would close the
+             viewer, the editor (with its unsaved edits) and every dialog. -->
+        <activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|uiMode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.provider.action.REVIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" android:mimeType="image/*" />
+                <data android:scheme="content" android:mimeType="video/*" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

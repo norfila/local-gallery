@@ -1,0 +1,23 @@
+.gradle/
+.idea/
+local.properties
+**/build/
+*.iml
+.kotlin/
+captures/
+test-artifacts/
+*.log
+# Local emulator image, build outputs and test logs
+.gallery-test-avd/
+dist/
+test-*.txt
+
+# Google Play upload key (never commit)
+keystore.properties
+*.jks
+*.keystore
+# Signed bundles from Android Studio's "Generate Signed App Bundle" (app/<flavor>/release)
+/app/*/release/
+
+# Private working folder: backlog, plans, notes, QA records. Never published.
+.local/

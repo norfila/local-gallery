@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="widget_surface_auto">#17271D</color>
+    <color name="widget_image_auto">#294235</color>
+    <color name="widget_icon_auto">#D8E8CB</color>
+</resources>

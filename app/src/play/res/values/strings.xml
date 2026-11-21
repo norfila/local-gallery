@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The Google Play version has its own name, so both versions can sit side by side. -->
+    <string name="app_name" translatable="false">Local Gallery</string>
+</resources>

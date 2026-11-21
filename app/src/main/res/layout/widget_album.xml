@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_album_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_album_background_auto"
+    android:clipToOutline="true">
+    <FrameLayout
+        android:id="@+id/widget_album_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/widget_album_image_background_auto"
+        android:clipToOutline="true">
+        <ImageView android:id="@+id/widget_album_cover" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitXY" android:contentDescription="@string/widget_cover_description" android:background="@drawable/widget_album_image_background_auto" android:clipToOutline="true" />
+        <ImageView android:id="@+id/widget_album_placeholder" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:src="@drawable/widget_album_icon_auto" android:contentDescription="@null" />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:background="@drawable/widget_album_scrim"
+        android:paddingTop="10dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        android:paddingBottom="5dp">
+        <TextView android:id="@+id/widget_album_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/nav_albums" android:textSize="12sp" android:textStyle="bold" android:textColor="#FFFFFF" android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" />
+        <TextView android:id="@+id/widget_album_count" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/widget_tap_to_open" android:textSize="12sp" android:textColor="#EAF0E4" android:maxLines="2" android:ellipsize="end" android:visibility="gone" android:includeFontPadding="false" />
+    </LinearLayout>
+</FrameLayout>
