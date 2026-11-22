@@ -17,6 +17,9 @@
 ### Fixed
 - Highlighted entries (the current choice in menus, selected rows) stay readable with every palette, including wallpaper colors that make highlights light in dark mode.
 
+### Removed
+- Location access from the app's permissions. The map library declared it; the app never used it and only reads where photos were taken.
+
 ## [0.22.0] - 2026-11-21
 
 First public release of the source code.

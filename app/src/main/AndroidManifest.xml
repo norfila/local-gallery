@@ -13,6 +13,10 @@
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- The map library declares location access for its "my location" layer, which the app does not use: it reads
+         where photos were taken (ACCESS_MEDIA_LOCATION), never where the phone is. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" tools:node="remove" />
     <!-- "Set as wallpaper" when the phone has no crop-and-set screen of its own; a normal, install-time permission. -->
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <queries>
