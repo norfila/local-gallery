@@ -3,7 +3,7 @@ package com.luma.gallery.widget
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
@@ -54,7 +54,7 @@ import kotlinx.coroutines.withContext
  * Used by the Android widget picker, by "reconfigure" on the home screen and when an empty
  * widget is tapped. Cancelling never leaves a half-configured instance.
  */
-class AlbumWidgetConfigureActivity : ComponentActivity() {
+class AlbumWidgetConfigureActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setResult(RESULT_CANCELED)
@@ -65,7 +65,7 @@ class AlbumWidgetConfigureActivity : ComponentActivity() {
         }
         enableEdgeToEdge()
         setContent {
-            GalleryTheme(AppPreferences(this).themeMode()) {
+            GalleryTheme(AppPreferences(this).themeMode(), AppPreferences(this).colorPalette(), AppPreferences(this).pureBlack()) {
                 var albums by remember { mutableStateOf<List<Album>?>(null) }
                 var library by remember { mutableStateOf<List<Photo>>(emptyList()) }
                 var failed by remember { mutableStateOf(false) }

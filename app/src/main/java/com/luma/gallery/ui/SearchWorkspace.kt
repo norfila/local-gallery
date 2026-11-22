@@ -265,7 +265,8 @@ private fun FavoriteSearchChoices(query: PhotoQuery, favorites: List<FavoriteFil
                 Row(Modifier.heightIn(min = 40.dp).padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     Icon(if (active) Icons.Outlined.Check else Icons.Outlined.StarOutline, null, Modifier.size(16.dp))
                     Text(favorite.name, Modifier.weight(1f, fill = false), style = MaterialTheme.typography.bodySmall, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                    if (favorite.query.activeFilterCount() > 1) Text("${favorite.query.activeFilterCount()}", style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
+                    if (favorite.query.activeFilterCount() > 1) Text("${favorite.query.activeFilterCount()}", style = MaterialTheme.typography.bodySmall,
+                        color = if (active) colors.onPrimaryContainer.copy(alpha = .8f) else colors.onSurfaceVariant)
                 }
             }
         }

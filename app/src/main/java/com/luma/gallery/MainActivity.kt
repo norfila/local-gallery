@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -30,7 +30,8 @@ import com.luma.gallery.data.Photo
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class MainActivity : ComponentActivity() {
+// AppCompatActivity (not ComponentActivity) so the app language chosen in Settings also works on Android 12 and older.
+class MainActivity : AppCompatActivity() {
     private val model by viewModels<GalleryViewModel>()
     private var permissionVersion by mutableIntStateOf(0)
     private var requestedAlbumId by mutableStateOf<Long?>(null)
@@ -47,7 +48,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             @Suppress("UNUSED_EXPRESSION")
             permissionVersion
-            GalleryTheme(model.themeMode, roundedPhotoCorners = model.roundedPhotoCorners) {
+            GalleryTheme(model.themeMode, model.colorPalette, model.pureBlack, roundedPhotoCorners = model.roundedPhotoCorners) {
                 val dark = LocalGalleryDarkTheme.current
                 SideEffect {
                     WindowCompat.getInsetsController(window, window.decorView).apply {

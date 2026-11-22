@@ -346,9 +346,10 @@ private fun RatingChoiceChip(stars: Int, selected: Boolean, onChoose: (Int) -> U
 
 @Composable
 private fun CriterionChoiceRow(label: String, selected: Boolean, onSelect: () -> Unit) {
-    Surface(color = if (selected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface, contentColor = MaterialTheme.colorScheme.onSurface, shape = RoundedCornerShape(23.dp)) {
+    val colors = MaterialTheme.colorScheme
+    Surface(color = if (selected) colors.primaryContainer else colors.surface, contentColor = if (selected) colors.onPrimaryContainer else colors.onSurface, shape = RoundedCornerShape(23.dp)) {
         Row(Modifier.fillMaxWidth().selectable(selected, role = Role.RadioButton, onClick = onSelect).heightIn(min = 52.dp).padding(start = 10.dp, end = 12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            RadioButton(selected, onClick = null)
+            RadioButton(selected, onClick = null, colors = RadioButtonDefaults.colors(selectedColor = colors.onPrimaryContainer))
             Text(label, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
         }
     }

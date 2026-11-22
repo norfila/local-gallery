@@ -13,9 +13,13 @@ Open the project folder in Android Studio and run the app configuration, or buil
 
 On macOS or Linux use `./gradlew` with the same tasks. Select the **fullOptimized** build variant when judging scrolling performance; the debug variants include development overhead.
 
-`scripts\build.ps1` (Windows) builds the sideloaded APKs, runs unit tests and lint, and copies the results into `dist\`. `.\scripts\build.ps1 -Play` also builds the signed Google Play bundle.
+`scripts\build.ps1` (Windows) builds the sideloaded APKs, runs unit tests and lint, and copies the results into `dist\`. `.\scripts\build.ps1 -Play` also builds the signed Google Play bundle, and `-GitHub` the signed release APK of the full version (`dist\Gallery-<version>.apk`).
 
 All text lives in string resources (`app/src/main/res/values/strings.xml`), with a complete German translation in `values-de`.
+
+**Colors:** `ui/Palettes.kt` holds the palettes offered in Settings / Appearance. Sage keeps Gallery's hand-picked colors; the others are Material tonal palettes, and `galleryRoles` moves cards, secondary text and lines to Sage's proportions so every palette fits the layout. Pure black (`black()`) only replaces the page tones in dark mode. Widgets, the map placeholder and the arrangement previews keep fixed colors.
+
+**App language:** Settings / General / Language uses AndroidX AppCompat's per-app languages (`AppLanguage`), which is why both activities are `AppCompatActivity` and the app theme has an AppCompat parent. Android 13+ stores the choice itself and lists the app's languages from `res/xml/locales_config.xml`; on older versions AppCompat stores it. A new language needs its `values-xx` folder, an entry in `locales_config.xml`, in `AppLanguage` and in `androidResources.localeFilters` (`app/build.gradle.kts`).
 
 ## Two versions
 
@@ -26,7 +30,7 @@ One codebase builds two apps (Gradle product flavors):
 | Name | Gallery | Local Gallery |
 | Application ID | `com.luma.gallery` | `com.norfila.gallery` |
 | Hidden page | All files access or chosen folders | Chosen folders only |
-| Signing | Development certificate (`fullOptimized`) | Upload key, Play App Signing (`playRelease`, AAB) |
+| Signing | Development certificate (`fullOptimized`, local installs); GitHub key (`fullRelease`, published APK) | Upload key, Play App Signing (`playRelease`, AAB) |
 
 Both can be installed side by side; their albums and settings are separate.
 
@@ -37,7 +41,11 @@ Both can be installed side by side; their albums and settings are separate.
 
 If a new feature needs a permission or service that Google Play restricts, put the declaration in `app/src/full/` and guard the code with a `BuildConfig` flag in the same way. Device tests run against the full version (`fullDebug`).
 
-**Release signing:** `playRelease` is signed with an upload key named in `keystore.properties` next to `settings.gradle.kts` (keys `storeFile`, `storePassword`, `keyAlias`, `keyPassword`). The file is ignored by git; without it, Play builds stay unsigned.
+**Release signing:** `keystore.properties` next to `settings.gradle.kts` (ignored by git) names the signing keys and their passwords:
+- `storeFile`, `storePassword`, `keyAlias`, `keyPassword`: the Google Play upload key, for `playRelease`.
+- `githubStoreFile`, `githubStorePassword`, `githubKeyAlias`, `githubKeyPassword`: the key of the full version published on GitHub, for `fullRelease`. Every GitHub release must be signed with it, or the update will not install over the previous one.
+
+Without an entry, that release stays unsigned. Keep both keystores and their passwords backed up outside the project.
 
 ## Privacy policy
 

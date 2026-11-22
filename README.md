@@ -18,16 +18,16 @@ A calm, fast gallery for the photos and videos on your Android phone. Everything
 - Viewer with zoom, video playback, animated GIFs and full photo details
 - Crop, rotate and draw on a copy; move files between folders with undo
 - Bin with restore (Android 11+) and a separate page for hidden media
+- Light, dark or pure black, ten color palettes, in English or German
 
 More detail: [docs/guide.md](docs/guide.md)
 
 ## Install
 
-Status: the Google Play release is in review. Once it is live, the app is at
-[play.google.com/store/apps/details?id=com.norfila.gallery](https://play.google.com/store/apps/details?id=com.norfila.gallery).
-Until then, build it from source.
+- **Google Play:** [Local Gallery](https://play.google.com/store/apps/details?id=com.norfila.gallery) (the first release is in review).
+- **Full version (APK):** download `Gallery-<version>.apk` from [Releases](https://github.com/norfila/local-gallery/releases). It installs as **Gallery** next to the Play version and can also use "All files access" for the Hidden page, which Google Play does not allow. Android asks once to allow installing from your browser or file manager.
 
-Android 8.0 or newer. The app is in English and German.
+Android 8.0 or newer. The app is in English and German; it follows the phone's language or the one chosen in Settings.
 
 ## Permissions
 

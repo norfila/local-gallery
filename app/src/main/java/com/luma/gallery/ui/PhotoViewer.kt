@@ -115,7 +115,8 @@ import kotlinx.coroutines.launch
 
 private val ViewerWhite = Color(0xFFF5F3ED)
 private val ViewerMuted = Color(0xFFB9BFC5)
-private val ViewerAccent = Color(0xFFC8DAB1)
+/** Follows the chosen colours (Settings / Appearance); the viewer is always dark, so it is the dark-mode accent. */
+private val ViewerAccent: Color @Composable get() = LocalViewerAccent.current
 private val ViewerSheet = Color(0xFF151B23)
 
 /**

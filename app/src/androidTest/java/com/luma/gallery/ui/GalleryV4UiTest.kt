@@ -84,12 +84,13 @@ class GalleryV4UiTest {
         waitForDescription(highName)
         openSettings()
         choose("start-page-dropdown", "Videos")
-        compose.onNodeWithTag("settings-layout-masonry").performScrollTo().performClick().assertIsSelected()
-        compose.onNodeWithTag("columns-choice-5").performScrollTo().performClick().assertIsSelected()
-        assertArrangementPreview("Masonry, 5 columns, square corners")
-        compose.onNodeWithTag("rounded-photo-corners").performScrollTo().assertIsOff().performClick().assertIsOn()
-        assertArrangementPreview("Masonry, 5 columns, rounded corners")
-        capture("layout-settings")
+        // Photo and folder arrangement live on their pages only.
+        compose.onNodeWithTag("photo-arrangement-preview").assertDoesNotExist()
+        compose.onNodeWithTag("rounded-photo-corners").assertDoesNotExist()
+        compose.onNodeWithTag("rounded-folder-corners").assertDoesNotExist()
+        compose.onNodeWithTag("settings-website").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("settings-source-code").performScrollTo().assertIsDisplayed()
+        capture("settings-general")
         compose.onNodeWithText("Open Android app settings").assertDoesNotExist()
         // Photo locations are part of Media access; there is no separate GPS row.
         compose.onNodeWithText("Photo GPS metadata").assertDoesNotExist()
@@ -99,6 +100,7 @@ class GalleryV4UiTest {
         compose.onNodeWithText("Gallery does not add or change ratings.", substring = true).assertDoesNotExist()
         compose.onNodeWithContentDescription("About Gallery").performScrollTo().performClick()
         compose.onNodeWithText("Gallery does not add or change ratings.", substring = true).assertExists()
+        compose.onNodeWithText("Gallery is free and open source", substring = true).assertExists()
         androidx.test.espresso.Espresso.pressBack()
         compose.onNodeWithContentDescription("Back").assertIsDisplayed()
         compose.onNodeWithText("Gallery does not add or change ratings.", substring = true).assertDoesNotExist()
@@ -113,6 +115,14 @@ class GalleryV4UiTest {
         androidx.test.espresso.Espresso.pressBack()
         compose.onNodeWithTag("privacy-policy").assertDoesNotExist()
         compose.onNodeWithContentDescription("Back").performClick()
+        compose.onNodeWithTag("arrangement-button").performClick()
+        compose.onNodeWithTag("settings-layout-masonry").performClick().assertIsSelected()
+        compose.onNodeWithTag("columns-choice-5").performScrollTo().performClick().assertIsSelected()
+        assertArrangementPreview("Masonry, 5 columns, square corners")
+        compose.onNodeWithTag("arrangement-rounded-corners").performScrollTo().assertIsOff().performClick().assertIsOn()
+        assertArrangementPreview("Masonry, 5 columns, rounded corners")
+        capture("layout-sheet")
+        androidx.test.espresso.Espresso.pressBack()
         assertGrid("Masonry, 5 columns")
         capture("masonry-five-columns")
         compose.runOnIdle {
@@ -128,14 +138,14 @@ class GalleryV4UiTest {
         assertGrid("Masonry, 5 columns")
         openSettings()
         compose.onNodeWithTag("start-page-dropdown").assertTextContains("Videos")
-        compose.onNodeWithTag("settings-layout-masonry").performScrollTo().assertIsSelected()
-        compose.onNodeWithTag("columns-choice-5").performScrollTo().assertIsSelected()
-        assertArrangementPreview("Masonry, 5 columns, rounded corners")
-        compose.onNodeWithTag("rounded-photo-corners").performScrollTo().assertIsOn()
         androidx.test.espresso.Espresso.pressBack()
         compose.onNodeWithContentDescription("Back").assertDoesNotExist()
         compose.onNodeWithTag("arrangement-button").performClick()
         compose.onNodeWithText("Photo arrangement").assertIsDisplayed()
+        compose.onNodeWithTag("settings-layout-masonry").assertIsSelected()
+        compose.onNodeWithTag("columns-choice-5").performScrollTo().assertIsSelected()
+        assertArrangementPreview("Masonry, 5 columns, rounded corners")
+        compose.onNodeWithTag("arrangement-rounded-corners").performScrollTo().assertIsOn()
         compose.onNodeWithTag("settings-layout-grid").performClick().assertIsSelected()
         compose.onNodeWithTag("columns-choice-1").performClick().assertIsSelected()
         assertArrangementPreview("Grid, 1 column, rounded corners")
@@ -465,7 +475,7 @@ class GalleryV4UiTest {
         compose.onNodeWithContentDescription("Open navigation menu").performClick()
         drawerItem(label).performClick()
     }
-    private fun openSettings() { openPage("Settings"); compose.onNodeWithTag("appearance-dropdown").assertExists() }
+    private fun openSettings() { openPage("Settings"); compose.onNodeWithTag("language-dropdown").assertExists() }
     /** Favorites are empty in these tests, so add "Rating ≥ 4" through the Often used rating editor. */
     private fun addFourStarRule() {
         // No Espresso.closeSoftKeyboard(): it waits for the activity window to have focus, which the search

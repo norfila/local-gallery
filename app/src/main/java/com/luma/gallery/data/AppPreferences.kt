@@ -8,6 +8,16 @@ import com.luma.gallery.R
 import org.json.JSONArray
 
 enum class ThemeMode(@StringRes val labelRes: Int) { SYSTEM(R.string.theme_system), LIGHT(R.string.theme_light), DARK(R.string.theme_dark) }
+/**
+ * The app's colours, in the order Settings shows them. SYSTEM takes Android's colours (wallpaper or its settings)
+ * on Android 12+ and comes first, as on the phone's own colour pages; SAGE is Gallery's own and the default. The
+ * others are tonal palettes in the same recipe. Stored by name, so the order can change. See ui/Palettes.kt.
+ */
+enum class ColorPalette(@StringRes val labelRes: Int) {
+    SYSTEM(R.string.palette_system), SAGE(R.string.palette_sage), TEAL(R.string.palette_teal), BLUE(R.string.palette_blue),
+    PURPLE(R.string.palette_purple), PINK(R.string.palette_pink), RED(R.string.palette_red), ORANGE(R.string.palette_orange),
+    OLIVE(R.string.palette_olive), GRAY(R.string.palette_gray),
+}
 enum class StartPage(@StringRes val labelRes: Int) {
     LIBRARY(R.string.nav_library), PHOTOS(R.string.view_photos), VIDEOS(R.string.view_videos), FOLDERS(R.string.view_folders),
     ALBUMS(R.string.nav_albums), PLACES(R.string.nav_places), COUNTRIES(R.string.nav_countries),
@@ -20,6 +30,13 @@ class AppPreferences(context: Context) {
         ThemeMode.valueOf(preferences.getString("theme_mode", ThemeMode.SYSTEM.name)!!)
     }.getOrDefault(ThemeMode.SYSTEM)
     fun setThemeMode(mode: ThemeMode) { preferences.edit().putString("theme_mode", mode.name).apply() }
+    fun colorPalette(): ColorPalette = runCatching {
+        ColorPalette.valueOf(preferences.getString("color_palette", ColorPalette.SAGE.name)!!)
+    }.getOrDefault(ColorPalette.SAGE)
+    fun setColorPalette(palette: ColorPalette) { preferences.edit().putString("color_palette", palette.name).apply() }
+    /** In dark mode, a black page instead of the palette's darkest tone (for OLED screens). */
+    fun pureBlack(): Boolean = runCatching { preferences.getBoolean("pure_black", false) }.getOrDefault(false)
+    fun setPureBlack(black: Boolean) { preferences.edit().putBoolean("pure_black", black).apply() }
     fun startPage(): StartPage = runCatching {
         StartPage.valueOf(preferences.getString("start_page", StartPage.LIBRARY.name)!!)
     }.getOrDefault(StartPage.LIBRARY)

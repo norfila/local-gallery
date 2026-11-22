@@ -18,6 +18,7 @@ import com.luma.gallery.data.LibraryStore
 import com.luma.gallery.data.MediaRepository
 import com.luma.gallery.data.Photo
 import com.luma.gallery.data.AppPreferences
+import com.luma.gallery.data.ColorPalette
 import com.luma.gallery.data.ThemeMode
 import com.luma.gallery.data.StartPage
 import com.luma.gallery.data.PhotoLayout
@@ -46,6 +47,10 @@ class GalleryViewModel(application: Application) : AndroidViewModel(application)
     private val libraryMutex = Mutex()
     private val preferences = AppPreferences(application)
     var themeMode by mutableStateOf(preferences.themeMode())
+        private set
+    var colorPalette by mutableStateOf(preferences.colorPalette())
+        private set
+    var pureBlack by mutableStateOf(preferences.pureBlack())
         private set
     var startPage by mutableStateOf(preferences.startPage())
         private set
@@ -183,6 +188,9 @@ class GalleryViewModel(application: Application) : AndroidViewModel(application)
         themeMode = mode
         AlbumWidgetProvider.refreshAll(getApplication())
     }
+
+    fun changeColorPalette(palette: ColorPalette) { preferences.setColorPalette(palette); colorPalette = palette }
+    fun changePureBlack(black: Boolean) { preferences.setPureBlack(black); pureBlack = black }
 
     fun changeStartPage(page: StartPage) { preferences.setStartPage(page); startPage = page }
     fun changePhotoColumns(columns: Int) { preferences.setPhotoColumns(columns); photoColumns = columns.coerceIn(1, 6) }

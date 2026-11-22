@@ -3,50 +3,45 @@ package com.luma.gallery.ui
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.luma.gallery.data.ColorPalette
 import com.luma.gallery.data.ThemeMode
 
 val LocalGalleryDarkTheme = staticCompositionLocalOf { false }
 internal val LocalRoundedPhotoCorners = staticCompositionLocalOf { false }
 
-private val LightColors = lightColorScheme(
-    primary = Color(0xFF43614E), onPrimary = Color.White,
-    primaryContainer = Color(0xFFD8E8CB), onPrimaryContainer = Color(0xFF233C2A),
-    secondary = Color(0xFF626B5B), secondaryContainer = Color(0xFFE3E9D9),
-    background = Color(0xFFF7F8F2), onBackground = Color(0xFF1E2B23),
-    surface = Color(0xFFF7F8F2), onSurface = Color(0xFF1E2B23),
-    surfaceVariant = Color(0xFFEAEDE3), onSurfaceVariant = Color(0xFF71796C),
-    outline = Color(0xFFB5BDB0), outlineVariant = Color(0xFFDFE4D8),
-)
-private val DarkColors = darkColorScheme(
-    primary = Color(0xFFC1DCAB), onPrimary = Color(0xFF253C25),
-    primaryContainer = Color(0xFF334C36), onPrimaryContainer = Color(0xFFD7ECC9),
-    secondary = Color(0xFFB9C6AE), secondaryContainer = Color(0xFF2B382C),
-    background = Color(0xFF111713), onBackground = Color(0xFFE9EDE3),
-    surface = Color(0xFF111713), onSurface = Color(0xFFE9EDE3),
-    surfaceVariant = Color(0xFF212B23), onSurfaceVariant = Color(0xFFA4AF9F),
-    outline = Color(0xFF566251), outlineVariant = Color(0xFF2F3B30),
-)
+/** The accent on the photo viewer's always-dark controls: the palette's dark-mode primary. */
+internal val LocalViewerAccent = staticCompositionLocalOf { Color(0xFFC1DCAB) }
 
 @Composable
-fun GalleryTheme(mode: ThemeMode = ThemeMode.SYSTEM, roundedPhotoCorners: Boolean = false, content: @Composable () -> Unit) {
+fun GalleryTheme(
+    mode: ThemeMode = ThemeMode.SYSTEM,
+    palette: ColorPalette = ColorPalette.SAGE,
+    pureBlack: Boolean = false,
+    roundedPhotoCorners: Boolean = false,
+    content: @Composable () -> Unit,
+) {
     val dark = when (mode) {
         ThemeMode.SYSTEM -> isSystemInDarkTheme()
         ThemeMode.LIGHT -> false
         ThemeMode.DARK -> true
     }
-    CompositionLocalProvider(LocalGalleryDarkTheme provides dark, LocalRoundedPhotoCorners provides roundedPhotoCorners) {
+    val context = LocalContext.current
+    // Not remembered: System colours follow the wallpaper, which can change while the app runs; building is cheap.
+    val colors = palette.colorScheme(context, dark, pureBlack)
+    val viewerAccent = if (dark) colors.primary else palette.colorScheme(context, dark = true).primary
+    CompositionLocalProvider(LocalGalleryDarkTheme provides dark, LocalRoundedPhotoCorners provides roundedPhotoCorners,
+        LocalViewerAccent provides viewerAccent) {
     MaterialTheme(
-        colorScheme = if (dark) DarkColors else LightColors,
+        colorScheme = colors,
         typography = Typography(
             headlineLarge = TextStyle(fontFamily = FontFamily.Serif, fontSize = 38.sp, lineHeight = 44.sp, letterSpacing = (-1).sp),
             headlineMedium = TextStyle(fontFamily = FontFamily.Serif, fontSize = 30.sp, lineHeight = 36.sp),

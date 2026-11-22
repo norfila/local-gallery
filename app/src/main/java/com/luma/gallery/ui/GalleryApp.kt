@@ -118,7 +118,8 @@ fun GalleryApp(
     var selected by remember { mutableStateOf(setOf<String>()) }
     var searchOpen by rememberSaveable { mutableStateOf(false) }
     var fullFiltersInitially by rememberSaveable { mutableStateOf(false) }
-    var settingsOpen by remember { mutableStateOf(false) }
+    // Saved, so Settings stays open when choosing a language rebuilds the screen.
+    var settingsOpen by rememberSaveable { mutableStateOf(false) }
     var layoutOpen by remember { mutableStateOf(false) }
     var albumOptions by remember { mutableStateOf<Album?>(null) }
     var widgetAlbum by remember { mutableStateOf<Album?>(null) }
@@ -722,8 +723,8 @@ private fun DrawerLink(label: String, icon: ImageVector, selected: Boolean, onCl
 private fun WelcomeScreen(onRequest: () -> Unit, modifier: Modifier = Modifier) {
     Column(modifier.fillMaxSize().padding(horizontal = 30.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
         Box(Modifier.size(156.dp).clip(RoundedCornerShape(48.dp)).background(MaterialTheme.colorScheme.primaryContainer), contentAlignment = Alignment.Center) {
-            Icon(Icons.Outlined.FilterHdr, null, modifier = Modifier.size(86.dp), tint = MaterialTheme.colorScheme.primary)
-            Box(Modifier.size(17.dp).offset(x = 31.dp, y = (-34).dp).clip(CircleShape).background(MaterialTheme.colorScheme.primary))
+            Icon(Icons.Outlined.FilterHdr, null, modifier = Modifier.size(86.dp), tint = MaterialTheme.colorScheme.onPrimaryContainer)
+            Box(Modifier.size(17.dp).offset(x = 31.dp, y = (-34).dp).clip(CircleShape).background(MaterialTheme.colorScheme.onPrimaryContainer))
         }
         Spacer(Modifier.height(34.dp))
         Text(stringResource(R.string.welcome_title), style = MaterialTheme.typography.headlineLarge, textAlign = androidx.compose.ui.text.style.TextAlign.Center)

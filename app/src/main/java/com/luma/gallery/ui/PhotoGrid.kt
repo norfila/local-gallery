@@ -386,19 +386,24 @@ private fun PhotoListRow(photo: Photo, selected: Boolean, selecting: Boolean,
             if (photo.isVideo) Icon(Icons.Outlined.PlayArrow, stringResource(R.string.grid_video), tint = Color.White,
                 modifier = Modifier.size(22.dp).background(Color.Black.copy(alpha = .45f), RoundedCornerShape(11.dp)))
         }
+        // On the highlight, everything uses its own text colour: Android's colours only promise contrast for that pair.
+        val scheme = MaterialTheme.colorScheme
+        val main = if (selected) scheme.onPrimaryContainer else scheme.onSurface
+        val quiet = if (selected) scheme.onPrimaryContainer.copy(alpha = .8f) else scheme.onSurfaceVariant
+        val accent = if (selected) scheme.onPrimaryContainer else scheme.primary
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            Text(photo.name, style = MaterialTheme.typography.bodyLarge, maxLines = 1, overflow = TextOverflow.Ellipsis)
-            if (details.isNotEmpty()) Text(details, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+            Text(photo.name, color = main, style = MaterialTheme.typography.bodyLarge, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            if (details.isNotEmpty()) Text(details, style = MaterialTheme.typography.bodySmall, color = quiet,
                 maxLines = 1, overflow = TextOverflow.Ellipsis)
-            if (badge != null) Text(badge, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+            if (badge != null) Text(badge, style = MaterialTheme.typography.labelSmall, color = accent)
         }
         if (photo.rating > 0) Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(Icons.Outlined.Star, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(14.dp))
-            Text("${photo.rating}", style = MaterialTheme.typography.labelMedium)
+            Icon(Icons.Outlined.Star, null, tint = accent, modifier = Modifier.size(14.dp))
+            Text("${photo.rating}", color = main, style = MaterialTheme.typography.labelMedium)
         }
-        if (photo.hasLocation) Icon(Icons.Outlined.Place, stringResource(R.string.grid_has_gps), tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(16.dp))
+        if (photo.hasLocation) Icon(Icons.Outlined.Place, stringResource(R.string.grid_has_gps), tint = quiet, modifier = Modifier.size(16.dp))
         if (selecting) Icon(if (selected) Icons.Outlined.CheckCircle else Icons.Outlined.RadioButtonUnchecked,
             stringResource(if (selected) R.string.grid_selected else R.string.grid_not_selected),
-            tint = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(22.dp))
+            tint = if (selected) accent else quiet, modifier = Modifier.size(22.dp))
     }
 }

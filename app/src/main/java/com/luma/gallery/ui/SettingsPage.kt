@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -43,15 +44,19 @@ import com.luma.gallery.BuildConfig
 import com.luma.gallery.GalleryViewModel
 import com.luma.gallery.R
 import com.luma.gallery.data.AllFilesAccess
+import com.luma.gallery.data.AppLanguage
 import com.luma.gallery.data.MediaManagement
 import androidx.lifecycle.compose.LifecycleResumeEffect
-import com.luma.gallery.data.PhotoLayout
+import androidx.compose.ui.platform.LocalUriHandler
 import com.luma.gallery.data.StartPage
-import com.luma.gallery.data.ThemeMode
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 private enum class SettingsInfo(val titleRes: Int) { ABOUT(R.string.settings_about), MEDIA(R.string.settings_media_access) }
+
+/** The app's public source code (GPL-3.0-or-later). */
+private const val SOURCE_CODE_URL = "https://github.com/norfila/local-gallery"
 
 @Composable
 internal fun GallerySettingsPage(
@@ -68,6 +73,14 @@ internal fun GallerySettingsPage(
 ) {
     var info by rememberSaveable { mutableStateOf<SettingsInfo?>(null) }
     var privacyOpen by rememberSaveable { mutableStateOf(false) }
+    val uriHandler = LocalUriHandler.current
+    val scope = rememberCoroutineScope()
+    val websiteUrl = stringResource(R.string.website_url)
+    val noBrowser = stringResource(R.string.link_open_unavailable)
+    // A phone without a browser has nothing to open the link with; say so instead of failing silently.
+    fun openLink(url: String) {
+        runCatching { uriHandler.openUri(url) }.onFailure { scope.launch { snackbar.showSnackbar(noBrowser) } }
+    }
     Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false, decorFitsSystemWindows = false)) {
         val view = LocalView.current
         val dark = LocalGalleryDarkTheme.current
@@ -87,9 +100,13 @@ internal fun GallerySettingsPage(
                         Text(stringResource(R.string.nav_settings), Modifier.padding(start = 3.dp), style = MaterialTheme.typography.titleLarge)
                     }
                     Column(Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(start = 18.dp, end = 18.dp, bottom = 20.dp)) {
-                        SettingsSection(stringResource(R.string.settings_section_appearance)) {
-                            CompactSettingsDropdown(stringResource(R.string.settings_appearance), Icons.Outlined.Brightness6, model.themeMode,
-                                ThemeMode.entries.map { it to stringResource(it.labelRes) }, "appearance-dropdown", model::changeThemeMode)
+                        SettingsSection(stringResource(R.string.settings_section_general)) {
+                            // Read whenever Settings is built: choosing a language rebuilds the screen in it.
+                            val language = remember { AppLanguage.current() }
+                            CompactSettingsDropdown(stringResource(R.string.settings_language), Icons.Outlined.Translate, language,
+                                AppLanguage.entries.map { it to stringResource(it.labelRes) }, "language-dropdown") { chosen ->
+                                if (chosen != language) chosen.apply()
+                            }
                             SettingsRowDivider()
                             CompactSettingsDropdown(stringResource(R.string.settings_start_page), Icons.Outlined.Home, model.startPage,
                                 StartPage.entries.map { it to stringResource(it.labelRes) }, "start-page-dropdown", model::changeStartPage)
@@ -100,23 +117,11 @@ internal fun GallerySettingsPage(
                                     "rotate-viewer-only", model::changeRotateOnlyInViewer, subtitle = stringResource(R.string.settings_rotate_viewer_only_subtitle))
                             }
                         }
-                        SettingsSection(stringResource(R.string.settings_section_photos)) {
-                            PhotoArrangementPreview(model.photoColumns, model.photoLayout, model.roundedPhotoCorners,
-                                Modifier.padding(start = 14.dp, end = 14.dp, top = 12.dp, bottom = 4.dp))
-                            LayoutChoiceRow(model.photoLayout, model::changePhotoLayout)
-                            SettingsRowDivider()
-                            if (model.photoLayout != PhotoLayout.LIST) {
-                                ColumnChoiceRow(stringResource(R.string.settings_photos_per_row), model.photoColumns, "columns-choice", model::changePhotoColumns)
-                                SettingsRowDivider()
-                            }
-                            SwitchRow(stringResource(R.string.settings_rounded_corners), Icons.Outlined.RoundedCorner, model.roundedPhotoCorners,
-                                "rounded-photo-corners", model::changeRoundedPhotoCorners)
-                        }
-                        SettingsSection(stringResource(R.string.settings_section_folders)) {
-                            FolderArrangementPreview(model.folderColumns, model.folderLayout, model.roundedFolderCorners,
-                                Modifier.padding(start = 14.dp, end = 14.dp, top = 12.dp, bottom = 4.dp))
-                            FolderArrangementControls(model.folderColumns, model.folderLayout, model.roundedFolderCorners,
-                                model::changeFolderColumns, model::changeFolderLayout, model::changeRoundedFolderCorners)
+                        // Photo and folder arrangement live on their pages (the button beside the item count), where
+                        // the change can be seen; Settings keeps what applies to the whole app.
+                        SettingsSection(stringResource(R.string.settings_appearance)) {
+                            AppearanceSection(model.themeMode, model.colorPalette, model.pureBlack, model::changeThemeMode, model::changeColorPalette,
+                                model::changePureBlack)
                         }
                         SettingsSection(stringResource(R.string.settings_section_library)) {
                             SettingsPageAction(stringResource(R.string.settings_scan), Icons.Outlined.DocumentScanner,
@@ -138,6 +143,11 @@ internal fun GallerySettingsPage(
                                 "online-map", model::changeOnlineMap, subtitle = stringResource(R.string.settings_online_map_subtitle))
                         }
                         SettingsFooterLink(stringResource(R.string.settings_about), Icons.Outlined.Info, BuildConfig.VERSION_NAME) { info = SettingsInfo.ABOUT }
+                        // Plain links to the developer's page and the public source; nothing to download or buy there.
+                        SettingsFooterLink(stringResource(R.string.settings_website), Icons.Outlined.Language,
+                            stringResource(R.string.settings_website_value), tag = "settings-website") { openLink(websiteUrl) }
+                        SettingsFooterLink(stringResource(R.string.settings_source_code), Icons.Outlined.Code,
+                            stringResource(R.string.settings_source_code_value), tag = "settings-source-code") { openLink(SOURCE_CODE_URL) }
                         SettingsFooterLink(stringResource(R.string.settings_privacy), Icons.Outlined.PrivacyTip, tag = "settings-privacy") { privacyOpen = true }
                     }
                 }
@@ -202,7 +212,7 @@ internal fun HiddenMediaAccess(model: GalleryViewModel, allFilesAccess: Boolean,
             onClick = actions.openAllFilesSettings, tag = "hidden-all-files-access")
         if (!allFilesAccess) {
             Surface(Modifier.fillMaxWidth().padding(start = 44.dp, end = 14.dp, bottom = 10.dp), shape = RoundedCornerShape(18.dp),
-                color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = .55f)) {
+                color = MaterialTheme.colorScheme.primaryContainer, contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
                 Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text(stringResource(R.string.hidden_all_files_explanation), style = MaterialTheme.typography.bodySmall)
                     Button(onClick = actions.openAllFilesSettings, modifier = Modifier.align(Alignment.End).testTag("allow-all-files")) {
@@ -317,6 +327,10 @@ private fun SettingsRowDivider() {
     HorizontalDivider(Modifier.padding(start = 44.dp, end = 14.dp), color = MaterialTheme.colorScheme.outlineVariant)
 }
 
+/**
+ * A choice among a few options as a row: icon, title, and the current value with a small arrow at its end. The
+ * whole row is the target, so it opens wherever it is tapped; the list drops down under the value.
+ */
 @Composable
 private fun <T> CompactSettingsDropdown(
     label: String,
@@ -330,22 +344,19 @@ private fun <T> CompactSettingsDropdown(
     val colors = MaterialTheme.colorScheme
     val currentLabel = options.first { it.first == value }.second
     val stacked = LocalDensity.current.fontScale > 1.3f
-    Row(Modifier.fillMaxWidth().heightIn(min = 56.dp).padding(horizontal = 14.dp, vertical = 4.dp),
-        horizontalArrangement = Arrangement.spacedBy(11.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(
+        Modifier.fillMaxWidth().testTag(tag)
+            .clickable(role = Role.DropdownList, onClickLabel = label) { expanded = true }
+            .semantics { contentDescription = label; stateDescription = currentLabel }
+            .heightIn(min = 56.dp).padding(start = 14.dp, end = 8.dp, top = 6.dp, bottom = 6.dp),
+        horizontalArrangement = Arrangement.spacedBy(11.dp), verticalAlignment = Alignment.CenterVertically,
+    ) {
         Icon(icon, null, Modifier.size(19.dp), tint = colors.onSurfaceVariant)
         @Composable fun ValueMenu() {
             Box {
-                Surface(
-                    onClick = { expanded = !expanded }, shape = CircleShape,
-                    color = colors.outlineVariant.copy(alpha = .48f),
-                    modifier = Modifier.testTag(tag).widthIn(max = if (stacked) 230.dp else 180.dp)
-                        .semantics { contentDescription = label; stateDescription = currentLabel },
-                ) {
-                    Row(Modifier.heightIn(min = 40.dp).padding(start = 12.dp, end = 9.dp, top = 5.dp, bottom = 5.dp),
-                        horizontalArrangement = Arrangement.spacedBy(5.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Text(currentLabel, style = MaterialTheme.typography.bodySmall, fontSize = 12.sp)
-                        Icon(Icons.Outlined.KeyboardArrowDown, null, Modifier.size(16.dp), tint = colors.onSurfaceVariant)
-                    }
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(currentLabel, style = MaterialTheme.typography.labelLarge, color = colors.primary)
+                    Icon(Icons.Filled.ArrowDropDown, null, tint = colors.primary)
                 }
                 DropdownMenu(expanded, onDismissRequest = { expanded = false }, modifier = Modifier.widthIn(min = 176.dp, max = 264.dp),
                     shape = RoundedCornerShape(20.dp), containerColor = colors.surface, tonalElevation = 0.dp, shadowElevation = 2.dp,
@@ -353,15 +364,18 @@ private fun <T> CompactSettingsDropdown(
                     options.forEach { (option, name) ->
                         Surface(Modifier.padding(horizontal = 6.dp), shape = RoundedCornerShape(14.dp),
                             color = if (option == value) colors.primaryContainer else Color.Transparent) {
+                            // Text on the highlight uses its own colour: Android's colours only promise contrast for that pair.
+                            val onChoice = if (option == value) colors.onPrimaryContainer else colors.onSurface
                             DropdownMenuItem(text = { Text(name, style = MaterialTheme.typography.bodyMedium) },
                                 onClick = { expanded = false; onChoose(option) },
+                                colors = MenuDefaults.itemColors(textColor = onChoice, trailingIconColor = onChoice),
                                 trailingIcon = { if (option == value) Icon(Icons.Outlined.Check, null, Modifier.size(18.dp)) })
                         }
                     }
                 }
             }
         }
-        if (stacked) Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        if (stacked) Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(label, style = MaterialTheme.typography.bodyMedium)
             ValueMenu()
         } else {
@@ -421,6 +435,7 @@ private fun SettingsInfoSheet(
             }
             if (info == SettingsInfo.ABOUT) {
                 Text(stringResource(R.string.about_version, BuildConfig.VERSION_NAME, itemCount), style = MaterialTheme.typography.bodyMedium)
+                SettingsInfoText(stringResource(R.string.about_open_source_title), stringResource(R.string.about_open_source_body))
                 SettingsInfoText(stringResource(R.string.about_ratings_title), stringResource(R.string.about_ratings_body))
                 SettingsInfoText(stringResource(R.string.about_gestures_title), stringResource(R.string.about_gestures_body))
                 SettingsInfoText(stringResource(R.string.about_viewer_title), stringResource(R.string.about_viewer_body))

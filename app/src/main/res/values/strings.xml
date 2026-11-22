@@ -341,9 +341,19 @@
     <string name="theme_system">System</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
-    <string name="settings_section_appearance">Appearance &amp; launch</string>
-    <string name="settings_section_photos">Photos</string>
-    <string name="settings_section_folders">Folders</string>
+    <string name="settings_mode">Mode</string>
+    <string name="settings_colors">Colors</string>
+    <string name="settings_pure_black">Pure black</string>
+    <string name="palette_sage">Sage</string>
+    <string name="palette_system">System colors</string>
+    <string name="palette_teal">Teal</string>
+    <string name="palette_blue">Blue</string>
+    <string name="palette_purple">Purple</string>
+    <string name="palette_pink">Pink</string>
+    <string name="palette_red">Red</string>
+    <string name="palette_orange">Orange</string>
+    <string name="palette_olive">Olive</string>
+    <string name="palette_gray">Gray</string>
     <string name="settings_section_library">Library &amp; access</string>
     <string name="settings_appearance">Appearance</string>
     <string name="settings_start_page">Start page</string>
@@ -355,6 +365,19 @@
     <string name="settings_media_access">Media access</string>
     <string name="settings_about">About Gallery</string>
     <string name="settings_privacy">Privacy policy</string>
+    <string name="settings_section_general">General</string>
+    <string name="settings_language">Language</string>
+    <string name="language_system">System default</string>
+    <string name="language_en" translatable="false">English</string>
+    <string name="language_de" translatable="false">Deutsch</string>
+    <string name="settings_website">Website</string>
+    <string name="settings_website_value" translatable="false">norfila.com</string>
+    <string name="website_url">https://norfila.com/apps/local-gallery/</string>
+    <string name="settings_source_code">Source code</string>
+    <string name="settings_source_code_value" translatable="false">GitHub</string>
+    <string name="about_open_source_title">Open source</string>
+    <string name="about_open_source_body">Gallery is free and open source under the GNU General Public License, version 3 or later. Anyone can read, check and improve its code on GitHub.</string>
+    <string name="link_open_unavailable">No app can open this link.</string>
     <string name="privacy_policy_asset">privacy-policy.html</string>
     <string name="settings_close_info">Close %s</string>
     <string name="access_full">Full access</string>

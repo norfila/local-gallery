@@ -22,6 +22,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.luma.gallery.MainActivity
 import com.luma.gallery.data.LibraryStore
 import com.luma.gallery.data.AppPreferences
+import com.luma.gallery.data.ColorPalette
 import com.luma.gallery.data.ThemeMode
 import com.luma.gallery.data.StartPage
 import com.luma.gallery.data.PhotoLayout
@@ -46,6 +47,8 @@ class GalleryUiTest {
         override fun evaluate() {
             val preferences = AppPreferences(context)
             val originalTheme = preferences.themeMode()
+            val originalPalette = preferences.colorPalette()
+            val originalPureBlack = preferences.pureBlack()
             val originalStartPage = preferences.startPage()
             val originalLayout = preferences.photoLayout()
             val originalColumns = preferences.photoColumns()
@@ -53,6 +56,8 @@ class GalleryUiTest {
             val originalFavorites = preferences.favoriteFilters()
             // The ViewModel reads these during activity launch, before @Before runs.
             preferences.setThemeMode(ThemeMode.SYSTEM)
+            preferences.setColorPalette(ColorPalette.SAGE)
+            preferences.setPureBlack(false)
             preferences.setStartPage(StartPage.LIBRARY)
             preferences.setPhotoLayout(PhotoLayout.GRID)
             preferences.setPhotoColumns(3)
@@ -63,6 +68,8 @@ class GalleryUiTest {
             try { base.evaluate() } finally {
                 if (originalOnlineMap == null) preferences.forgetOnlineMapChoice() else preferences.setOnlineMap(originalOnlineMap)
                 preferences.setThemeMode(originalTheme)
+                preferences.setColorPalette(originalPalette)
+                preferences.setPureBlack(originalPureBlack)
                 preferences.setStartPage(originalStartPage)
                 preferences.setPhotoLayout(originalLayout)
                 preferences.setPhotoColumns(originalColumns)
@@ -187,8 +194,7 @@ class GalleryUiTest {
         compose.onNodeWithText("luma").assertDoesNotExist()
         compose.onNodeWithText("Your library.").assertDoesNotExist()
         openSettings()
-        compose.onNodeWithTag("appearance-dropdown").performClick()
-        compose.onNodeWithText("Dark").performClick()
+        compose.onNodeWithTag("appearance-dark").performScrollTo().performClick()
         compose.onNodeWithContentDescription("Back").performClick()
         compose.onNodeWithTag("gallery-shell").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Dark appearance"))
         compose.activityRule.scenario.recreate()
@@ -197,14 +203,25 @@ class GalleryUiTest {
         searchQaPhotos()
         capture("theme-dark")
         openSettings()
-        compose.onNodeWithTag("appearance-dropdown").performClick()
-        compose.onNodeWithText("Light").performClick()
+        compose.onNodeWithTag("appearance-light").performScrollTo().performClick()
         compose.onNodeWithContentDescription("Back").performClick()
         compose.onNodeWithTag("gallery-shell").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Light appearance"))
         capture("theme-light")
         openSettings()
-        compose.onNodeWithTag("appearance-dropdown").performClick()
-        compose.onNodeWithText("System").performClick()
+        compose.onNodeWithTag("appearance-system").performScrollTo().performClick()
+        // Colours: the choice applies at once, survives a restart and can go back to Sage.
+        compose.onNodeWithTag("palette-sage").performScrollTo().assertIsSelected()
+        compose.onNodeWithTag("palette-blue").performScrollTo().performClick().assertIsSelected()
+        compose.runOnIdle { assertEquals(ColorPalette.BLUE, AppPreferences(context).colorPalette()) }
+        capture("settings-blue")
+        compose.activityRule.scenario.recreate()
+        openSettings()
+        compose.onNodeWithTag("palette-blue").performScrollTo().assertIsSelected()
+        compose.onNodeWithTag("palette-sage").performScrollTo().performClick().assertIsSelected()
+        // Pure black: switched on and off again, and remembered.
+        compose.onNodeWithTag("pure-black").performScrollTo().assertIsOff().performClick().assertIsOn()
+        compose.runOnIdle { assertTrue(AppPreferences(context).pureBlack()) }
+        compose.onNodeWithTag("pure-black").performClick().assertIsOff()
         capture("settings")
         compose.onNodeWithContentDescription("Back").performClick()
     }
@@ -330,7 +347,7 @@ class GalleryUiTest {
     private fun openSettings() {
         compose.onNodeWithContentDescription("Open navigation menu").performClick()
         drawerItem("Settings").performClick()
-        compose.onNodeWithTag("appearance-dropdown").assertExists()
+        compose.onNodeWithTag("language-dropdown").assertExists()
     }
 
     private fun searchQaPhotos() {
