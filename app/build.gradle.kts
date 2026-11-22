@@ -22,6 +22,9 @@ android {
     androidResources {
         localeFilters += listOf("en", "de")
     }
+    // Google Play would otherwise install only the phone's own languages, and the language switch in Settings
+    // could then not show the other one.
+    bundle { language { enableSplit = false } }
     buildFeatures { compose = true; buildConfig = true }
     // The privacy policy published for Google Play is also shown in the app (Settings).
     sourceSets["main"].assets.srcDir(rootProject.file("docs/privacy"))
